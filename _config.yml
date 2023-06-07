@@ -2,7 +2,7 @@ title: Pradyumna Malladi
 author: Pradyumna Malladi
 url: https://mssrprad.github.io # root address of the site
 description: > # description of the site (multiple lines allowed)
-  This is the personal website of Pradyumna Malladi.
+  This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
 
 permalink: /:slug
 
