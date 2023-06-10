@@ -1,8 +1,8 @@
 navbar_entries:
-  - title: about
+  - title: ./about
     url: about
 
-  - title: blog
+  - title: ./blog
     url: blog
 
 project_entries:
@@ -16,20 +16,35 @@ project_entries:
     desc: An application that Identifies the scheme of a Sanskrit Verse. Identifies both matra based and vrtta based metres. Also uses levenshtein distance to identify the closest scheme for vrtta based metres.
     highlight: Rust
 
+  - title: PPT-API
+    url: https://github.com/MSSRPRAD/ppt-api
+    desc: Used openai's GPT-3 to generate a powerpoint presentation from a given text. Used Flask for the backend. Used openai's python library for the API calls. Sadly my API key expired right when I had got the prototype working so the project had to be shelved.
+    highlight: Python Flask OpenAI ChatGPT
+
   - title: ML Models
     url: https://github.com/MSSRPRAD/ml-models
     desc: Implemented a few ML classification Models using only numpy and pandas python libraries. It was a group project done together with Dhruv Arora as part of our Machine Learning course.
     highlight: Python Numpy Pandas Matplotlib
 
+  - title: ToDo App Flask
+    url: https://github.com/MSSRPRAD/ToDoFlask
+    desc: A simple ToDo app made using Flask and SQLite. Used flask-login for authentication. Server Side Rendering using Jinja2. Used SQLAlchemy for database operations. Not so good frontend.
+    highlight: Python Flask SQLAlchemy Jinja2
+
 old_project_entries:
   - title: Website
     url: https://mssrprad.github.io/website
     desc: Older version of my personal website (now not in use)
-    highlight: SolidJS, TailwindCSS
+    highlight: SolidJS TailwindCSS
+
+  - title: Website
+    url: https://mssrprad.github.io/ForumApp
+    desc: Tried to make a Forum App in Flask. Made a decent backend but the frontend is very bad. Also the messaging system needs total rewrite using websockets or something similar. The project needs a lot of work and I will revisit it someday but for now, I am including it here.
+    highlight: Flask Jinja2 SQLite SQLAlchemy Flask-Login
 
 footer_entries:
-  - title: pradyumna's homepage
-    url: https://mssrprad.github.io/
+  - title: email
+    url: mailto:f20210367@hyderabad.bits-pilani.ac.in
 
   # - title: twitter
   #   url: https://twitter.com/abhinav
@@ -40,36 +55,29 @@ footer_entries:
   - title: feed
     url: feed.xml
 
-# misc_entries:
-#   - title: this is an example vertical list
-#     url: false
+misc_entries:
+  - title: Twitter Clone
+    url: false
+    entries:
+      - title: Github
+        url: https://github.com/MSSRPRAD/twitter-clone
 
-#   - title: you can show or hide using a boolean flag in _config.yml
-#     url: false
+      - title: Trying to make a basic clone of twitter using MAST Stack (forgive me for the acronym :) ) while trying to teach myself web development (especially frontend).
+        url: false
 
-#   - title: and you can add data in _data/home.yml
-#     url: false
+      - title: Stack
+        url: false
+        entries:
+          - title: Typescript, SolidJS (Frontend)
+            url: false
 
-  # - title: Blog posts
-  #   post_list: true
-  #   url: false
+          - title: TailwindCSS (Styling)
+            url: false
 
-  # - title: moonwalk on the Internet
-  #   url: false
-  #   entries:
-  #     - title: on Github
-  #       url: https://github.com/abhinavs/moonwalk
-
-  #     - title: originally built for abhinav's homepage
-  #       url: https://www.abhinav.co
-
-  #     - title: this list is scalable and can be nested
-  #       url: false
-  #       entries:
-  #         - title: this is nested inside a nested list
-  #           url: false
-
-  #         - title: it is easy to use, see _data/home.yml to see how to configure it.
-  #           url: false
+          - title: Rust, Actix-Web (Backend)
+            url: false
+          
+          - title: MySQL (Database), Redis (Session Store)
+            url: false
 
 
