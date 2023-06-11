@@ -32,7 +32,7 @@ theme_config:
   show_reading_time: true # show number of words and reading time in the blog posts
   show_tags: true # show tags in a blog posts
   # options for "home" page
-  home:
+  home: 
     title_projects: Portfolio
     title_misc_list: Details
     title_blog: Blog
