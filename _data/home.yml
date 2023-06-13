@@ -80,4 +80,40 @@ misc_entries:
           - title: MySQL (Database), Redis (Session Store)
             url: false
 
+  - title: Neural Networks Library (Python)
+    url: false
+    entries:
+      # - title: Github
+      #   url: https://github.com/MSSRPRAD/twitter-clone
+
+      - title: Trying to make some basic neural networks from scratch in python. Currently implementing only dense layers. Also there is no cuda support (numpy everywhere). Will add github repo here after some basic work is done on this.
+        url: false
+
+      - title: Stack
+        url: false
+        entries:
+          - title: Numpy (subject to change)
+            url: false
+
+          - title: Pandas
+            url: false
+
+          - title: Rust
+            url: false
+
+  - title: CSES Problemset
+    url: false
+    entries:
+      # - title: Github
+      #   url: https://github.com/MSSRPRAD/twitter-clone
+
+      - title: Working my way through the CSES Problem Set (https://cses.fi/problemset/). Time to accept reality and start grinding :( . I would like to maintain a post and update it with each problem (bit excessive but only way I would ever get anything done)
+        url: false
+
+      - title: Stack
+        url: false
+        entries:
+          - title: C++
+            url: false
+
 
