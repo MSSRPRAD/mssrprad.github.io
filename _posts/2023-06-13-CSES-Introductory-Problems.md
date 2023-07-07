@@ -4,8 +4,6 @@ author: Malladi Pradyumna
 tags: [welcome, miscellaneous]
 ---
 
-# Introductory Problems
-
 # 1. Weird Algorithm
 
 Let's try the most obvious solution:
@@ -519,3 +517,51 @@ std::vector<std::string> gray_code(long long n){
 ### Result:
 ACCEPTED on all test cases!
 
+# 14. Tower of Hanoi
+
+I am really sorry I wrote a really big post for this one but my laptop lost power and everything was gone. Seems the work wasn't saved (Loving first day of emacs already). 
+
+So, A quick summary will have to suffice (No energy for anything more :"(  ) : 
+
+The soln is simple. To move N Disks from Tower 1 to Tower 3 using Tower 2, We first move the top N-1 Disks to tower 2 and the Nth (Bottom Most) Disk to Tower 3. Then We Move the N-2 Disks on Tower 2 to Tower 3. It is a simple Recursion problem.
+
+
+Quick Implementation:
+
+```
+#include<iostream>
+#include<vector>
+#include<utility>
+
+typedef long long ll;
+typedef std::pair<int, int> Move;
+
+void tower_of_hanoi(ll from_tower, ll using_tower, ll to_tower, ll no_of_disks, std::vector<Move> &moves){
+    if(no_of_disks == 0){
+        // Base Case
+        return;
+    } else {
+        // First move the N-1 disks to the middle tower
+        tower_of_hanoi(from_tower, to_tower, using_tower, no_of_disks-1, moves);
+        // Move one disk from the left tower to the right tower
+        // Add the move to the moves vector
+        moves.push_back(std::make_pair(from_tower, to_tower));
+        // Move N-1 disks from the middle tower to the right tower
+        tower_of_hanoi(using_tower, from_tower, to_tower, no_of_disks-1, moves);
+    }
+}
+
+
+int main(void){
+    ll n;
+    std::cin>>n;
+    std::vector<Move> moves;
+    tower_of_hanoi(1, 2, 3, n, moves);
+    std::cout<<moves.size()<<"\n";
+    for(const auto &move: moves) {
+        std::cout<<move.first<<" "<<move.second<<"\n";
+    }
+    return 0;
+}
+
+```
