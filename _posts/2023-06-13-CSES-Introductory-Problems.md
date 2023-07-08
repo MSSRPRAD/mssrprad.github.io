@@ -595,3 +595,143 @@ void permute(std::string str, int left, int right, std::set<std::string> &output
 ### Result:
 ACCEPTED!
 
+# 16. Apple Division
+
+We have a set of some numbers. We have to divide it into two sets such that the difference in the sum of the two sets is the least and we have to find that sum.
+
+```
+Ex Input:
+5
+3 2 7 4 1
+Two Sets:
+{2,3,4}, {7,1}
+```
+
+First let us sort the input:
+
+`7,4,3,2,1`
+
+Then let us take a number from the left and insert into set 1 and take the next numbers till the sum exceeds the first number and insert into set two. If it exceeds, we repeat the process. In this way we can solve the problem!
+
+Eg Soln:
+1. `{7} {4,3,2}`
+2. `{7,1} {4,3,2}`
+
+Implementation:
+```
+#include<iostream>
+#include<vector>
+#include<set>
+#include<algorithm>
+#define ll long long
+#define fio std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
+
+ll abs(ll a){
+  if(a>0){
+    return a;
+  } else {
+    return -1*a;
+  }
+}
+
+ll partition(std::vector<ll> &inputs, std::vector<ll> &grp1, std::vector<ll> &grp2, ll n){
+  std::sort(inputs.begin(), inputs.end(), std::greater<ll>());
+  bool insert_in_grp1 = true;
+  ll sum1 = 0, sum2 = 0;
+  for(auto x: inputs){
+    if(sum1>=sum2 && sum1+sum2 != 0){
+      insert_in_grp1 = false;
+    } else {
+      insert_in_grp1 = true;
+    };
+    if(insert_in_grp1){
+      grp1.push_back(x);
+      sum1 += x;
+    } else {
+      grp2.push_back(x);
+      sum2 += x;
+    }
+  }
+  return abs(sum1-sum2);
+}
+
+int main(void){
+  fio;
+  ll n;
+  ll diff = 0;
+  std::cin>>n;
+  std::vector<ll> inputs(n);
+  std::vector<ll> grp1, grp2;
+  for(ll i = 0; i < n; i ++){
+    std::cin>>inputs[i];
+  }
+  diff = partition(inputs, grp1, grp2, n);
+  std::cout<<diff;
+  return 0;
+}
+```
+
+### Result:
+FAILED! (On many test cases!)
+
+
+Maybe we are better off finding all the different possible splits and choosing the minimum difference instead....
+
+Also the constraint is: `1 <= n <= 20` which seems very favourible for a slow algorithm.
+
+There is a very simple way to get all divisions of a set into two subsets. We go through all the numbers from `0` to `2^n -1` and the `1/0` in the binary representation of each of indicate whether the element at that particular index is present in grp1 or grp2. Let us try to generate all the divisions using this and then go through them and choose the one where the sum is the least!
+
+(Not so quick) implementations!
+
+```
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <limits>
+
+#define ll long long
+#define fio std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
+
+ll partition(const std::vector<ll>& input, std::vector<ll>& grp1, std::vector<ll>& grp2, ll n) {
+    std::vector<ll> tmp_grp1, tmp_grp2;
+    ll diff = std::numeric_limits<ll>::max();
+    for (ll i = 0; i < (1 << n) - 1; i++) {
+        ll sum1 = 0, sum2 = 0;
+        tmp_grp1.clear();
+        tmp_grp2.clear();
+        for (ll index = 0; index < input.size(); index++) {
+            if ((i & (1 << index)) == 0) {
+                tmp_grp1.push_back(input[index]);
+                sum1 += input[index];
+            } else {
+                tmp_grp2.push_back(input[index]);
+                sum2 += input[index];
+            }
+        }
+        if (std::abs(sum1 - sum2) < diff) {
+            diff = std::abs(sum1 - sum2);
+            grp1 = tmp_grp1;
+            grp2 = tmp_grp2;
+        }
+    }
+    return diff;
+}
+
+int main() {
+    fio;
+    ll n;
+    std::cin>>n;
+    std::vector<ll> input(n);
+    for(ll i = 0; i < n; ++i){
+      std::cin>>input[i];
+    }
+    std::vector<ll> grp1, grp2;
+    ll diff = partition(input, grp1, grp2, n);
+    std::cout << diff << std::endl;
+
+    return 0;
+}
+```
+
+### Result:
+ACCEPTED! (On all test cases!)
