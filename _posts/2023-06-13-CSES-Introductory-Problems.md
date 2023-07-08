@@ -565,3 +565,33 @@ int main(void){
 }
 
 ```
+
+### Result:
+ACCEPTED! (on all test cases)
+
+# 15. Creating Strings
+
+We have to take a string, find all the permutations of it and return the output in alphabetical order.
+
+The method for generating permutations is pretty standard. If we store them in a `std::set`, that will take care of the lexicographic ordering automatically for us.
+
+Implementation:
+```
+void permute(std::string str, int left, int right, std::set<std::string> &outputs){
+  if(left == right) {
+    std::cout<<str<<std::endl;
+    outputs.insert(str);
+  } else {
+    for(int i=left;i<=right;i++){
+      std::swap(str[left], str[i]);
+      permute(str, left+1, right, outputs);
+      std::swap(str[left], str[i]);
+    }
+  }
+}
+
+```
+
+### Result:
+ACCEPTED!
+
