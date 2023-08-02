@@ -6,7 +6,7 @@ tags: [update, miscellaneous]
 
 # Hello There!
 
-I wish I could have said I got a lot of work done over the last two months or that I learnt a lot of new skills. Sadly that was not the case (surprise surprise).
+I wish I could have said I got a lot of work done over the last two months or that I learnt a lot of new skills. Sadly that was not the case (surprise surprise). 
 
 ### Logs:
 
