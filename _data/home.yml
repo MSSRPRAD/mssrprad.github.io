@@ -6,14 +6,20 @@ navbar_entries:
     url: blog
 
 project_entries:
+
+  - title: Crossword
+    url: https://github.com/MSSRPRAD/Crossword
+    desc: An application that generates a Crossword puzzle given a list of words and word hints.
+    highlight: Express Ninjucks Typescript
+
   - title: IndicScriptSwap
     url: https://github.com/MSSRPRAD/IndicScriptSwap
     desc: An application that transliterates text between various Indic and Roman scripts quickly. The program is compiled to wasm for a demo and is available as a Rust Crate
     highlight: Rust Wasm
 
-  - title: SanskritMetresRust
-    url: https://github.com/MSSRPRAD/SanskritMetresRust
-    desc: An application that Identifies the scheme of a Sanskrit Verse. Identifies both matra based and vrtta based metres. Also uses levenshtein distance to identify the closest scheme for vrtta based metres.
+  - title: Chandas
+    url: https://github.com/MSSRPRAD/Chandas
+    desc: An application that Identifies the scheme of (currently only) Sanskrit Verse. Identifies both matra based and vrtta based metres. Also uses levenshtein distance to identify the closest scheme for vrtta based metres.
     highlight: Rust
 
   - title: PPT-API
@@ -78,27 +84,6 @@ misc_entries:
             url: false
           
           - title: MySQL (Database), Redis (Session Store)
-            url: false
-
-  - title: Neural Networks Library (Python)
-    url: false
-    entries:
-      # - title: Github
-      #   url: https://github.com/MSSRPRAD/twitter-clone
-
-      - title: Trying to make some basic neural networks from scratch in python. Currently implementing only dense layers. Also there is no cuda support (numpy everywhere). Will add github repo here after some basic work is done on this.
-        url: false
-
-      - title: Stack
-        url: false
-        entries:
-          - title: Numpy (subject to change)
-            url: false
-
-          - title: Pandas
-            url: false
-
-          - title: Rust
             url: false
 
   - title: CSES Problemset
