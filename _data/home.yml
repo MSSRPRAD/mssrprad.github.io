@@ -7,6 +7,11 @@ navbar_entries:
 
 project_entries:
 
+  - title: NeuralNetLite
+    url: https://github.com/MSSRPRAD/NeuralNetLite
+    desc: Feed Forward Neural Networks from Scratch!
+    highlight: C++
+
   - title: Crossword
     url: https://github.com/MSSRPRAD/Crossword
     desc: An application that generates a Crossword puzzle given a list of words and word hints.
@@ -22,28 +27,30 @@ project_entries:
     desc: An application that Identifies the scheme of (currently only) Sanskrit Verse. Identifies both matra based and vrtta based metres. Also uses levenshtein distance to identify the closest scheme for vrtta based metres.
     highlight: Rust
 
-  - title: PPT-API
-    url: https://github.com/MSSRPRAD/ppt-api
-    desc: Used openai's GPT-3 to generate a powerpoint presentation from a given text. Used Flask for the backend. Used openai's python library for the API calls. Sadly my API key expired right when I had got the prototype working so the project had to be shelved.
-    highlight: Python Flask OpenAI ChatGPT
-
   - title: ML Models
     url: https://github.com/MSSRPRAD/ml-models
     desc: Implemented a few ML classification Models using only numpy and pandas python libraries. It was a group project done together with Dhruv Arora as part of our Machine Learning course.
     highlight: Python Numpy Pandas Matplotlib
+
+old_project_entries:
+
+
+  - title: PPT-API
+    url: https://github.com/MSSRPRAD/ppt-api
+    desc: Used openai's GPT-3 to generate a powerpoint presentation from a given text. Used Flask for the backend. Used openai's python library for the API calls. Sadly my API key expired right when I had got the prototype working so the project had to be shelved.
+    highlight: Python Flask OpenAI ChatGPT
 
   - title: ToDo App Flask
     url: https://github.com/MSSRPRAD/ToDoFlask
     desc: A simple ToDo app made using Flask and SQLite. Used flask-login for authentication. Server Side Rendering using Jinja2. Used SQLAlchemy for database operations. Not so good frontend.
     highlight: Python Flask SQLAlchemy Jinja2
 
-old_project_entries:
   - title: Website
     url: https://mssrprad.github.io/website
     desc: Older version of my personal website (now not in use)
     highlight: SolidJS TailwindCSS
 
-  - title: Website
+  - title: Forum Application
     url: https://mssrprad.github.io/ForumApp
     desc: Tried to make a Forum App in Flask. Made a decent backend but the frontend is very bad. Also the messaging system needs total rewrite using websockets or something similar. The project needs a lot of work and I will revisit it someday but for now, I am including it here.
     highlight: Flask Jinja2 SQLite SQLAlchemy Flask-Login
@@ -52,9 +59,6 @@ footer_entries:
   - title: email
     url: mailto:f20210367@hyderabad.bits-pilani.ac.in
 
-  # - title: twitter
-  #   url: https://twitter.com/abhinav 
-
   - title: github
     url: https://github.com/mssrprad
 
@@ -62,43 +66,22 @@ footer_entries:
     url: feed.xml
 
 misc_entries:
-  - title: Twitter Clone
+
+  - title: Gonna Leave this empty for now. Can't keep anything without feeling guilty of lying.
     url: false
-    entries:
-      - title: Github
-        url: https://github.com/MSSRPRAD/twitter-clone
+  # - title: CSES Problemset
+  #   url: false
+  #   entries:
+  #     # - title: Github
+  #     #   url: https://github.com/MSSRPRAD/twitter-clone
 
-      - title: Trying to make a basic clone of twitter using MAST Stack (forgive me for the acronym :) ) while trying to teach myself web development (especially frontend).
-        url: false
+  #     - title: Working my way through the CSES Problem Set (https://cses.fi/problemset/). Time to accept reality and start grinding :( . I would like to maintain a post and update it with each problem (bit excessive but only way I would ever get anything done)
+  #       url: false
 
-      - title: Stack
-        url: false
-        entries:
-          - title: Typescript, SolidJS (Frontend)
-            url: false
-
-          - title: TailwindCSS (Styling)
-            url: false
-
-          - title: Rust, Actix-Web (Backend)
-            url: false
-          
-          - title: MySQL (Database), Redis (Session Store)
-            url: false
-
-  - title: CSES Problemset
-    url: false
-    entries:
-      # - title: Github
-      #   url: https://github.com/MSSRPRAD/twitter-clone
-
-      - title: Working my way through the CSES Problem Set (https://cses.fi/problemset/). Time to accept reality and start grinding :( . I would like to maintain a post and update it with each problem (bit excessive but only way I would ever get anything done)
-        url: false
-
-      - title: Stack
-        url: false
-        entries:
-          - title: C++
-            url: false
+  #     - title: Stack
+  #       url: false
+  #       entries:
+  #         - title: C++
+  #           url: false
 
 
