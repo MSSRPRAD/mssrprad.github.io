@@ -1,50 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-22T01:48:03+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pradyumna Malladi</title><subtitle>This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
-</subtitle><author><name>Pradyumna Malladi</name></author><entry><title type="html">October Updates</title><link href="http://localhost:4000/october-updates" rel="alternate" type="text/html" title="October Updates" /><published>2023-10-22T00:00:00+05:30</published><updated>2023-10-22T00:00:00+05:30</updated><id>http://localhost:4000/October-Updates</id><content type="html" xml:base="http://localhost:4000/october-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-21T20:06:26+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pradyumna Malladi</title><subtitle>This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
+</subtitle><author><name>Pradyumna Malladi</name></author><entry><title type="html">Demo Post</title><link href="http://localhost:4000/demo-post" rel="alternate" type="text/html" title="Demo Post" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/Demo-Post</id><content type="html" xml:base="http://localhost:4000/demo-post">&lt;h1 id=&quot;this-is-the-demo-post&quot;&gt;This is the Demo Post&lt;/h1&gt;
 
-&lt;p&gt;Have been thinking about buying a domain name for myself and linking it to pages. Would cost around 800rs per year but maybe it’s worth it. Also this site is static but the Oracle Cloud Free Tier would allow me to have a dynamic site though I’m unsure as to whether it’s worth it…..&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;logs&quot;&gt;Logs&lt;/h2&gt;
-
-&lt;p&gt;Took a look at my August Updates and I can’t even remember writing it.&lt;/p&gt;
+&lt;h2 id=&quot;this-is-a-subheading&quot;&gt;This is a subheading&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;I never did the CSES after that :[&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;I did finish the crossword soon after that but it’s not completely ready yet. It needs some css work and have to add an option to download the crossword as a pdf.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;As for the twitter clone, it is more of a simple crud backend than a twitter clone. The only things remotely remarkable in it are the session based auth using redis and the functions to fetch the tweets in the timeline and tweet chains. Without WebSockets it doesn’t make much sense and the frontend isn’t ready yet.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;I did learn a lot while doing the project. Truly understanding the value of Rust now. It feels like a downgrade now using SQLAlchemy after using the sqlx crate for example. (The ability to check if the orm structs are matching the database schema is very powerful for eg!)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;As for the Ramayana, now I am in the 48th sarga. I switched over to &lt;a href=&quot;https://www.valmiki.iitk.ac.in/&quot;&gt;IITK-Ramayana&lt;/a&gt; from &lt;a href=&quot;https://ambuda.org/&quot;&gt;Ambuda&lt;/a&gt; because the latter doesn’t have the correct order of padas often and many remarkable verses are missing. Hope to finish it soon.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;As for CUDA, I found out that the easiest solution is just installing PopOs Nvidia Spin. After doing that I realized I am not using the drivers as much as I fantasized I would be using them so I switched back to my more comfortable Fedora Sway Spin :)&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;what-next&quot;&gt;What Next?&lt;/h2&gt;
+&lt;h3 id=&quot;ordered-lists&quot;&gt;Ordered Lists&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Design a nice API for the Chandas library. Also make a web-app to demonstrate it (something that’s more interactive than Shreevatsa sir’s site)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;LeetCode Grind&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Finish Ramayana this month&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Broke Deploy</title><link href="http://localhost:4000/broke-deploy" rel="alternate" type="text/html" title="Broke Deploy" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/Broke-Deploy</id><content type="html" xml:base="http://localhost:4000/broke-deploy">&lt;h1 id=&quot;it-happened&quot;&gt;It happened.&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;Broke my website deploy. I knew I shouldn’t have copied the workflow without understanding. The updates I made locally would show in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; but it wouldn’t when built and deployed to pages using the workflow.&lt;/p&gt;
+&lt;h2 id=&quot;image&quot;&gt;Image&lt;/h2&gt;
 
-&lt;p&gt;Fortunately there is a very simple temporary solution for this. I changed the deploy mechanism to deploy from a branch and am moving the static files to /docs before pushing updates. Now I have to add learning workflows to my long list of things I am never gonna get done.&lt;/p&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">It happened.</summary></entry><entry><title type="html">August Updates</title><link href="http://localhost:4000/august-updates" rel="alternate" type="text/html" title="August Updates" /><published>2023-08-03T00:00:00+05:30</published><updated>2023-08-03T00:00:00+05:30</updated><id>http://localhost:4000/August-Updates</id><content type="html" xml:base="http://localhost:4000/august-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://octodex.github.com/images/bannekat.png&quot; alt=&quot;Benjamin Bannekat&quot; /&gt;&lt;/p&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">This is the Demo Post</summary></entry><entry><title type="html">August Updates</title><link href="http://localhost:4000/august-updates" rel="alternate" type="text/html" title="August Updates" /><published>2023-08-03T00:00:00+05:30</published><updated>2023-08-03T00:00:00+05:30</updated><id>http://localhost:4000/August-Updates</id><content type="html" xml:base="http://localhost:4000/august-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
 
 &lt;p&gt;I wish I could have said I got a lot of work done over the last two months or that I learnt a lot of new skills. Sadly that was not the case (surprise surprise).&lt;/p&gt;
 
