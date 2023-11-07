@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-07T16:26:22+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pradyumna Malladi</title><subtitle>This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
+</subtitle><author><name>Pradyumna Malladi</name></author><entry><title type="html">Static Site Generator For Github Pages</title><link href="http://localhost:4000/static-site-generator-for-github-pages" rel="alternate" type="text/html" title="Static Site Generator For Github Pages" /><published>2023-11-07T00:00:00+05:30</published><updated>2023-11-07T00:00:00+05:30</updated><id>http://localhost:4000/Static-Site-Generator-for-Github-Pages</id><content type="html" xml:base="http://localhost:4000/static-site-generator-for-github-pages">&lt;h2 id=&quot;github-pages&quot;&gt;Github Pages&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Warning in Advance&lt;/code&gt;: This post is going to be very code heavy&lt;/p&gt;
+
+&lt;p&gt;If you don’t know what Github Pages is, it is this cool feature offered by Github where they allow you to host static files right from your GitHub repository.&lt;/p&gt;
+
+&lt;p&gt;All we have to do is keep our HTML, CSS, and JavaScript files with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in our repository (either in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root/&lt;/code&gt; folder or the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docs/&lt;/code&gt; folder) and choose the Source in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/settings/pages&lt;/code&gt; as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deploy from a branch&lt;/code&gt;. Each time we build, our website will be re-deployed (Though I have observed sometimes it doesn’t update and you have to unpublish the site and deploy again to fix it).&lt;/p&gt;
+
+&lt;p&gt;Otherwise, if you want to get fancy, you can even run a build process using some workflow wizardry.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-i-wanna-have-routing&quot;&gt;But I wanna have routing!&lt;/h2&gt;
+
+&lt;p&gt;I get it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.malladipradyumna.com/static-site-generator-for-github-pages.html&lt;/code&gt; looks way uglier.&lt;/p&gt;
+
+&lt;p&gt;Basically, we don’t want the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.html&lt;/code&gt;. We want to navigate to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/blog&lt;/code&gt; to see all the posts instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/blog.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-how-to-do-routing-in-a-static-site-deployed-to-github-pages&quot;&gt;But how to do routing in a static site deployed to github pages?&lt;/h2&gt;
+
+&lt;p&gt;There are two ways.&lt;/p&gt;
+
+&lt;h3 id=&quot;have-a-spa-single-page-application-and-manage-routing-using-javascript-and-the-history-api&quot;&gt;Have a SPA (Single Page Application) and manage routing using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Javascript&lt;/code&gt; and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;history API&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Add this &lt;a href=&quot;https://stackoverflow.com/a/67041356&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;router.js&lt;/code&gt;&lt;/a&gt; to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Starting of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;router.js&lt;/code&gt; that doesn’t render
+&lt;img src=&quot;../images/router-js.png&quot; alt=&quot;Starting of router.js that doesn&apos;t render&quot; /&gt;
+Rest of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;router.js&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;about&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidPage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;routes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/about&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/blog&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;path: &lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;#root&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Add a single click event listener for all links that navigate within the site&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tagName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;startsWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;evt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pushState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;popstate&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;the-problems-with-this-approach&quot;&gt;The problems with this approach&lt;/h3&gt;
+
+&lt;p&gt;This works only if the user clicks a button that redirects to say &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/about&lt;/code&gt; but doesn’t work if the user opens say &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;www.malladipradyumna.com/about&lt;/code&gt;! It will navigate to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;404.html&lt;/code&gt; on Gh-Pages!&lt;/p&gt;
+
+&lt;p&gt;How to fix this?&lt;/p&gt;
+
+&lt;p&gt;One way is to use a script that automatically redirect to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; or the route based on the url when the document is loaded. See this &lt;a href=&quot;https://stackoverflow.com/questions/36296012/is-there-a-configuration-in-github-pages-that-allows-you-to-redirect-everything&quot;&gt;Stackoverflow Question&lt;/a&gt; for more about this.&lt;/p&gt;
+
+&lt;p&gt;But this method is not perfect!&lt;/p&gt;
+
+&lt;p&gt;The browser will often give a very annoying popup before the redirect.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-to-do-then&quot;&gt;What to do then?&lt;/h2&gt;
+
+&lt;p&gt;As I was struggling I suddenly realized something!&lt;/p&gt;
+
+&lt;p&gt;Wait a minute! Don’t I have two static websites running on Github Pages already! &lt;a href=&quot;https://github.com/mssrprad/website&quot;&gt;Website&lt;/a&gt; that uses SolidJS’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;solid-start&lt;/code&gt; router and &lt;a href=&quot;https://malladipradyumna.com&quot;&gt;Website&lt;/a&gt; that uses the Jekyll Static Site Generator!&lt;/p&gt;
+
+&lt;p&gt;After some inspection of the build directories, it was obvious that the Github Pages server was automatically rendering &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;route.html&lt;/code&gt; for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/route&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Both the websites were compiling/building a static html file for each route.&lt;/p&gt;
+
+&lt;h2 id=&quot;static-site-generator&quot;&gt;Static Site Generator&lt;/h2&gt;
+
+&lt;p&gt;Finally, we come to the Static Site Generator.&lt;/p&gt;
+
+&lt;h3 id=&quot;directory-structure&quot;&gt;Directory Structure&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── build.log
+├── build.py
+├── README.md
+├── requirements.txt
+├── src
+│   ├── about.html
+│   ├── base.html
+│   ├── blog.html
+│   ├── index.html
+│   ├── input.css
+│   ├── post.html
+│   ├── _posts
+│   ├── _site
+│   └── static
+├── tailwind.config.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;basehtml&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base.html&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Sorry am not able to render the html inside the code block due to some markdown conversion issues. Attaching a screenshot for now.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/base-html.png&quot; alt=&quot;base.html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that we are using &lt;a href=&quot;https://jinja.palletsprojects.com/en/3.1.x/templates/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jinja2&lt;/code&gt;&lt;/a&gt; templating syntax. You must have encountered it if you have ever worked with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flask&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;django&lt;/code&gt; libraries.&lt;/p&gt;
+
+&lt;p&gt;It makes the rendering of various different pages from our markdown/yaml content much easier.&lt;/p&gt;
+
+&lt;h3 id=&quot;posthtml-and-bloghtml&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post.html&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blog.html&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/post-html.png&quot; alt=&quot;post.html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/blog-html.png&quot; alt=&quot;blog.html&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;rendering-each-individual-page&quot;&gt;Rendering each individual page&lt;/h3&gt;
+
+&lt;p&gt;We load the content from say &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;home.md&lt;/code&gt; and convert to markdown and render into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;home.html&lt;/code&gt; inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docs/&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;home.md&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Home&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;## Navigation:&lt;/span&gt;
+
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Head over to /about to know more about me&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Head over to /blog to read my posts&lt;/span&gt;
+
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Get Home Page
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;home&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;frontmatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;home_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;home.md successfully loaded&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Failed to load home.md: %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Build index in docs
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./src/index.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;page_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;template_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;page_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rendered_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;template_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./docs/index.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rendered_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index.html successfully built and saved&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./docs/404.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rendered_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;404.html successfully built and saved&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We do this kind of thing for each page.&lt;/p&gt;
+
+&lt;h3 id=&quot;rendering-each-individual-post-and-bloghtml&quot;&gt;Rendering each individual post and blog.html&lt;/h3&gt;
+
+&lt;p&gt;Let’s say we have posts like this: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts/06-11-2023-Demo.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;posts = []
+try:
+    for filename in os.listdir(posts_path):
+        if filename.endswith(&quot;.md&quot;):  # Assuming your posts are Markdown files
+            post_path = os.path.join(posts_path, filename)
+            with open(post_path, &quot;r&quot;) as post_file:
+                posts.append({post_path: frontmatter.load(post_file)})
+    logger.debug(&quot;Posts successfully loaded&quot;)
+except Exception as e:
+    logger.error(&quot;Failed to load the posts from _posts: %s&quot;, str(e))
+
+page_blog = None
+post_keys = []
+
+for i in posts:
+    input_string = [a for a in i.keys()][0]
+    post_keys.append(
+        (
+            input_string.split(&quot;/&quot;)[-1]
+            .split(&quot;.md&quot;)[0]
+            .split(&quot;-&quot;, 3)[-1]
+            .replace(&quot;-&quot;, &quot; &quot;),
+            &quot;-&quot;.join(input_string.split(&quot;/&quot;)[-1].split(&quot;.md&quot;)[0].split(&quot;-&quot;)[:3][::-1]),
+            input_string,
+        )
+    )
+
+logger.debug(&quot;Post keys generated&quot;)
+
+
+def get_postcontent(path):
+    with open(path, &quot;r&quot;) as file:
+        return markdown.markdown(frontmatter.load(file).content)
+
+
+post_data = [
+    {
+        &quot;title&quot;: pk[0],
+        &quot;date&quot;: pk[1],
+        &quot;slug&quot;: pk[0].replace(&quot; &quot;, &quot;-&quot;),
+        &quot;content&quot;: get_postcontent(pk[2]),
+    }
+    for pk in post_keys
+]
+
+post_data = sorted(post_data, key=lambda x: x[&quot;date&quot;], reverse=True)
+
+
+logger.debug(&quot;Post data generated&quot;)
+
+with open(&quot;./src/blog.html&quot;, &quot;r&quot;) as file:
+    page_blog = file.read()
+    logger.debug(&quot;blog.html content loaded&quot;)
+
+template_blog = env.from_string(page_blog)
+rendered_blog = template_blog.render(posts=post_data)
+
+with open(&quot;./docs/blog.html&quot;, &quot;w&quot;) as file:
+    file.write(rendered_blog)
+    logger.debug(&quot;blog.html successfully built and saved&quot;)
+
+logger.info(&quot;No Build Errors!............&quot;)
+
+# Build each post
+with open(&quot;./src/post.html&quot;, &quot;r&quot;) as file:
+    page_post = file.read()
+    template_post = env.from_string(page_post)
+
+for post in post_data:
+    rendered_post = template_post.render(post=post)
+    post_slug = post[&quot;slug&quot;]
+    with open(f&quot;./docs/{post_slug}.html&quot;, &quot;w&quot;) as file:
+        file.write(rendered_post)
+        logger.debug(f&quot;{post_slug}.html successfully built and saved&quot;)
+
+# Copy static folders/files to docs
+shutil.copytree(&quot;./src/static&quot;, &quot;./docs/static&quot;, dirs_exist_ok=True)
+logger.debug(&quot;static files copied to docs&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;simulating-the-github-pages-server-using-a-simple-flask-server&quot;&gt;Simulating the Github Pages server using a simple flask server&lt;/h2&gt;
+
+&lt;p&gt;As I mentioned above, the Github Pages server will automatically render &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/route.html&lt;/code&gt; for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/route&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;But, our simple &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python -m http.server 8000&lt;/code&gt; will not do that!&lt;/p&gt;
+
+&lt;p&gt;A simple workaround is to use a simple Flask Server to simulate this Github Pages environment.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;send_from_directory&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Initialize Flask app
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;template_folder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;static_folder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./static&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/docs&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Start the dev server
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&amp;lt;route&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;serve_html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render_template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Development server started&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;end&quot;&gt;End&lt;/h2&gt;
+
+&lt;p&gt;As I’ve made the site, I learnt that the biggest difficulty was designing the frontend not all this scripting work. Making a static site generator is not so difficult especially since you have so many examples that you can reverse engineer.s&lt;/p&gt;
+
+&lt;p&gt;More than half the effort was spent in making the site look at least ‘not hideous’.&lt;/p&gt;
+
+&lt;p&gt;I don’t know why frontend development is said to be ‘easy’. I find it to be the most challenging part of web development.&lt;/p&gt;
+
+&lt;p&gt;Maybe because frontend optimization is not so important (or rather so costly)…&lt;/p&gt;
+
+&lt;h2 id=&quot;hope-you-enjoyed-the-post&quot;&gt;Hope you enjoyed the post!&lt;/h2&gt;</content><author><name>Malladi Pradyumna</name></author><category term="webdev" /><category term="python" /><category term="html" /><category term="css" /><category term="js" /><category term="github" /><category term="programming" /><summary type="html">Github Pages</summary></entry><entry><title type="html">October Updates</title><link href="http://localhost:4000/october-updates" rel="alternate" type="text/html" title="October Updates" /><published>2023-10-22T00:00:00+05:30</published><updated>2023-10-22T00:00:00+05:30</updated><id>http://localhost:4000/October-Updates</id><content type="html" xml:base="http://localhost:4000/october-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+
+&lt;p&gt;Have been thinking about buying a domain name for myself and linking it to pages. Would cost around 800rs per year but maybe it’s worth it. Also this site is static but the Oracle Cloud Free Tier would allow me to have a dynamic site though I’m unsure as to whether it’s worth it…..&lt;/p&gt;
+
+&lt;h2 id=&quot;logs&quot;&gt;Logs&lt;/h2&gt;
+
+&lt;p&gt;Took a look at my August Updates and I can’t even remember writing it.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;I never did the CSES after that :[&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I did finish the crossword soon after that but it’s not completely ready yet. It needs some css work and have to add an option to download the crossword as a pdf.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As for the twitter clone, it is more of a simple crud backend than a twitter clone. The only things remotely remarkable in it are the session based auth using redis and the functions to fetch the tweets in the timeline and tweet chains. Without WebSockets it doesn’t make much sense and the frontend isn’t ready yet.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I did learn a lot while doing the project. Truly understanding the value of Rust now. It feels like a downgrade now using SQLAlchemy after using the sqlx crate for example. (The ability to check if the orm structs are matching the database schema is very powerful for eg!)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As for the Ramayana, now I am in the 48th sarga. I switched over to &lt;a href=&quot;https://www.valmiki.iitk.ac.in/&quot;&gt;IITK-Ramayana&lt;/a&gt; from &lt;a href=&quot;https://ambuda.org/&quot;&gt;Ambuda&lt;/a&gt; because the latter doesn’t have the correct order of padas often and many remarkable verses are missing. Hope to finish it soon.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As for CUDA, I found out that the easiest solution is just installing PopOs Nvidia Spin. After doing that I realized I am not using the drivers as much as I fantasized I would be using them so I switched back to my more comfortable Fedora Sway Spin :)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-next&quot;&gt;What Next?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Design a nice API for the Chandas library. Also make a web-app to demonstrate it (something that’s more interactive than Shreevatsa sir’s site)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;LeetCode Grind&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finish Ramayana this month&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Broke Deploy</title><link href="http://localhost:4000/broke-deploy" rel="alternate" type="text/html" title="Broke Deploy" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/Broke-Deploy</id><content type="html" xml:base="http://localhost:4000/broke-deploy">&lt;h1 id=&quot;it-happened&quot;&gt;It happened.&lt;/h1&gt;
+
+&lt;p&gt;Broke my website deploy. I knew I shouldn’t have copied the workflow without understanding. The updates I made locally would show in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; but it wouldn’t when built and deployed to pages using the workflow.&lt;/p&gt;
+
+&lt;p&gt;Fortunately there is a very simple temporary solution for this. I changed the deploy mechanism to deploy from a branch and am moving the static files to /docs before pushing updates. Now I have to add learning workflows to my long list of things I am never gonna get done.&lt;/p&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">It happened.</summary></entry><entry><title type="html">August Updates</title><link href="http://localhost:4000/august-updates" rel="alternate" type="text/html" title="August Updates" /><published>2023-08-03T00:00:00+05:30</published><updated>2023-08-03T00:00:00+05:30</updated><id>http://localhost:4000/August-Updates</id><content type="html" xml:base="http://localhost:4000/august-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+
+&lt;p&gt;I wish I could have said I got a lot of work done over the last two months or that I learnt a lot of new skills. Sadly that was not the case (surprise surprise).&lt;/p&gt;
+
+&lt;h3 id=&quot;logs&quot;&gt;Logs:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Started solving the CSES problemset. Finished the Introductory Problems and am halfway through the Dynamic Programming ones. [Just coping right now saying ‘something is better than nothing’].&lt;/li&gt;
+  &lt;li&gt;Got some work done on the &lt;strong&gt;Twitter-Clone&lt;/strong&gt; application. It has a not-so-bad backend and, I admit, a bad frontend. Have implemented the Register, Login, Post, Comment, Follow functionalities in the frontend. Some more work needs to be done on this but it feels boring now. I did not use anything fancy like Websockets or SSE’s because 1. They are tough to implement in Rust 2. It’s not a production grade application anyway.&lt;/li&gt;
+  &lt;li&gt;Started Reading the Ramayana, in Sanskrit using the &lt;a href=&quot;https://ambuda.org/&quot;&gt;Ambuda&lt;/a&gt; website which provides पदच्छेद and easy dictionary searching for the meanings. I am also reading the English translation from &lt;a href=&quot;https://www.valmiki.iitk.ac.in/&quot;&gt;IITK-Ramayana&lt;/a&gt; simultaneously. I am in the 29Th सर्ग right now. I will make a separate post with my thoughts on this some other time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Grind through CSES and regularly attempt Codeforces.&lt;/li&gt;
+  &lt;li&gt;Looking forward to reading the विश्वामित्र story in the Ramayana and also the कुमारसम्भवम् story which is nearer.&lt;/li&gt;
+  &lt;li&gt;Finish my Crossword program.&lt;/li&gt;
+  &lt;li&gt;Going through https://rentry.org/llm-training  and learning how LLM’s work.&lt;/li&gt;
+  &lt;li&gt;Get CUDA setup on my PC by some chad when I return to the Campus.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Cses Introductory Problems</title><link href="http://localhost:4000/cses-introductory-problems" rel="alternate" type="text/html" title="Cses Introductory Problems" /><published>2023-06-13T00:00:00+05:30</published><updated>2023-06-13T00:00:00+05:30</updated><id>http://localhost:4000/CSES-Introductory-Problems</id><content type="html" xml:base="http://localhost:4000/cses-introductory-problems">&lt;h1 id=&quot;1-weird-algorithm&quot;&gt;1. Weird Algorithm&lt;/h1&gt;
+
+&lt;p&gt;Let’s try the most obvious solution:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void steps(int n) {
+    while (n != 1) {
+        std::cout&amp;lt;&amp;lt;n&amp;lt;&amp;lt;&quot; &quot;;
+        if (n % 2 == 0) {
+            n /= 2;
+        } else {
+            n = 3 * n + 1;
+        }
+    }
+    std::cout&amp;lt;&amp;lt;n;
+    return;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result&quot;&gt;Result:&lt;/h3&gt;
+
+&lt;p&gt;TIME LIMIT EXCEEDED on some test cases.&lt;/p&gt;
+
+&lt;p&gt;WRONG ANSWER on some test cases.&lt;/p&gt;
+
+&lt;p&gt;Wrong answer probably means some overflow occurred. Let’s try changing all the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;long&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void steps(long n) {
+    while (n != 1) {
+        std::cout&amp;lt;&amp;lt;n&amp;lt;&amp;lt;&quot; &quot;;
+        if (n % 2 == 0) {
+            n /= 2;
+        } else {
+            n = 3 * n + 1;
+        }
+    }
+    std::cout&amp;lt;&amp;lt;n;
+    return;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-1&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED on all test cases!&lt;/p&gt;
+
+&lt;h1 id=&quot;2-missing-number&quot;&gt;2. Missing Number&lt;/h1&gt;
+
+&lt;p&gt;This is actually a very simple problem. We can find the sum of first n numbers by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n*(n+1)/2&lt;/code&gt; and just subtract the sum of the numbers we received.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;numeric&amp;gt;
+
+int main(void){
+    long n, sum=0;
+    std::cin&amp;gt;&amp;gt;n;
+    for(long i=0;i&amp;lt;n-1;i++){
+        long no;
+        std::cin&amp;gt;&amp;gt;no;
+        sum+=no;
+    }
+    long actual_sum = n*(n+1)/2;
+    long missing = actual_sum - sum;
+    std::cout&amp;lt;&amp;lt;missing;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-2&quot;&gt;Result:&lt;/h3&gt;
+
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;3-repetitions&quot;&gt;3. Repetitions&lt;/h1&gt;
+
+&lt;p&gt;From what I understood we have to find the length of the longest repeating character sequence without gaps.&lt;/p&gt;
+
+&lt;p&gt;Let’s try the O(N) approach.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;string&amp;gt;
+
+int main(void){
+    std::string s;
+    std::cin &amp;gt;&amp;gt; s;
+    long len = s.length();
+    long ans = 1;
+    long max = 1;
+    for(long i=0;i&amp;lt;len;i++){
+        if(i&amp;lt;len-1){
+            if(s[i]==s[i+1]){
+                max++;
+            } else {
+                ans = std::max(max, ans);
+                max = 1;
+            }
+        } else {
+            ans = std::max(max, ans);
+        }
+    }
+    std::cout&amp;lt;&amp;lt;ans;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Result: ACCEPTED!&lt;/p&gt;
+
+&lt;p&gt;Nice!&lt;/p&gt;
+
+&lt;h1 id=&quot;4-increasing-array&quot;&gt;4. Increasing Array&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;You are given an array of n
+ integers. You want to modify the array so that it is increasing, i.e., every element is at least as large as the previous element.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So a solution is obvious:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Go through all the elements&lt;/li&gt;
+  &lt;li&gt;If an element is less than the previous element (if any) we need to increase it.&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;No of moves required = previous element - current element&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Update the current element to the previous value.&lt;/li&gt;
+  &lt;li&gt;Add up all the moves required.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+
+int main(void){
+    long n;
+    long moves = 0;
+    long prev = -1;
+    std::cin&amp;gt;&amp;gt;n;
+    for (long i = 0; i &amp;lt; n; i++)
+    {
+        long val;
+        std::cin &amp;gt;&amp;gt; val;
+        if (i &amp;gt; 0) {
+            if (val &amp;lt; prev) {
+                moves += prev - val;
+                val = prev;
+            }
+        }
+        prev = val;
+    }
+    std::cout&amp;lt;&amp;lt;moves;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-3&quot;&gt;Result:&lt;/h3&gt;
+
+&lt;p&gt;ACCEPTED&lt;/p&gt;
+
+&lt;h1 id=&quot;5-permutations&quot;&gt;5. Permutations&lt;/h1&gt;
+
+&lt;p&gt;I need to thank Rupanuga Mishra for the logic for this one. I simply couldn’t figure it out :”(&lt;/p&gt;
+
+&lt;p&gt;Logic is simple:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Loop from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i=0 to i=n/2 (i++)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Print the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ith&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n/2+ith&lt;/code&gt; numbers one after another&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Quick Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for(long i=1;i&amp;lt;=n/2;i++){
+    std::cout&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&quot; &quot;&amp;lt;&amp;lt;i+n/2&amp;lt;&amp;lt;&quot; &quot;;
+}
+// If odd print the last one also
+if(n%2==1){std::cout&amp;lt;&amp;lt;n&amp;lt;&amp;lt;&quot; &quot;;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-4&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;FAILED on many test cases.&lt;/p&gt;
+
+&lt;p&gt;Seeing the test cases it failed, I noticed a similarity. They are all either:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n==odd&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&amp;lt;6&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n==odd&lt;/code&gt; the last two numbers were &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n-1&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; so moving the if statement at the end 
+to the beginning should fix it. (Thanks Dhruv!)&lt;/p&gt;
+
+&lt;p&gt;For the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&amp;lt;6&lt;/code&gt; I just added edge conditions (cheating according to Dhruv but it works haha)!&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+int main(void){
+    long n;
+    std::cin&amp;gt;&amp;gt;n;
+    if(n==4){
+        std::cout&amp;lt;&amp;lt;&quot;3 1 4 2&quot;;
+        return 0;
+    }
+    if(n==5){
+        std::cout&amp;lt;&amp;lt;&quot;2 4 1 3 5&quot;;
+        return 0;
+    }
+    if(n==1){
+        std::cout&amp;lt;&amp;lt;&quot;1&quot;;
+        return 0;
+    }
+    if(n&amp;lt;6){std::cout&amp;lt;&amp;lt;&quot;NO SOLUTION&quot;; return 0;}
+    // If odd print the last one also
+    if(n%2==1){std::cout&amp;lt;&amp;lt;n&amp;lt;&amp;lt;&quot; &quot;;}
+    for(long i=1;i&amp;lt;=n/2;i++){
+        std::cout&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&quot; &quot;&amp;lt;&amp;lt;i+n/2&amp;lt;&amp;lt;&quot; &quot;;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-5&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;6-number-spiral&quot;&gt;6. Number Spiral&lt;/h1&gt;
+
+&lt;p&gt;Sadly I could not think of any elegant solution to the problem. After looking at it it seemed that the
+solution could be found using some elaborate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if-else&lt;/code&gt; blocks and so I did that.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Usage: find_no(y-1, x-1)
+long find_no(long row, long col){
+    long num;
+    // Lower Left
+    if (row&amp;gt;col){
+        long starting_element_of_row = row%2==1? (row+1)*(row+1) : row*row+1; 
+        num = row%2==0? starting_element_of_row + col : starting_element_of_row - col;
+    } 
+    // Upper Right
+    else if (row&amp;lt;col) {
+        long starting_element_of_column = col%2==0? (col+1)*(col+1) : col*col+1; 
+        num = col%2==0? starting_element_of_column - row : starting_element_of_column + row; 
+    } else 
+    // Diagonal
+    {
+        num = row*row+row+1;
+    }
+    return num;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-6&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;7-two-knights&quot;&gt;7. Two Knights&lt;/h1&gt;
+
+&lt;p&gt;This is a O(1) solution because there is a direct formula for the no of positions given a chessboard of some dimension.&lt;/p&gt;
+
+&lt;p&gt;Let’s say there is a KxK chessboard. We can place two knights in it in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K^2C2&lt;/code&gt; possible ways. How many of these ways make the two knights attack each other?&lt;/p&gt;
+
+&lt;p&gt;If two knights are attacking each other, they are at the corner squares of a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3x2&lt;/code&gt; rectangle. In a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3x2&lt;/code&gt; rectangle there are 4 ways we can arrange two knights so as to attack each other. So now how many 3x2 rectangles can we construct in a KxK chessboard?&lt;/p&gt;
+
+&lt;p&gt;Translating along the y-axis, we can have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K-3+1 = K-2&lt;/code&gt; positions for the rectangle.
+Translating along the x-axis, we can have &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K-2+1 = K-1&lt;/code&gt; positions for the rectangle.&lt;/p&gt;
+
+&lt;p&gt;Total no of positions where the two knights are attacking each other: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4*(K-2)*(K-1)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Total no of positions where the two knights are NOT attacking each other: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K^2C2-4*(K-2)*(K-1)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Quick Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;long no_of_ways(long n){
+    return (n*n*(n*n-1))/2 - 4*(n-1)*(n-2); 
+}
+
+int main(void){
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    long n;
+    std::cin&amp;gt;&amp;gt;n;
+    for(long i=1;i&amp;lt;=n;i++){
+        std::cout&amp;lt;&amp;lt;no_of_ways(i)&amp;lt;&amp;lt;std::endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-7&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;p&gt;Luckily there were no edge cases for this problem!&lt;/p&gt;
+
+&lt;h1 id=&quot;8-two-sets&quot;&gt;8. Two Sets&lt;/h1&gt;
+
+&lt;p&gt;So, I looked online and found out it is a DP Problem (which I unfortunately never learnt properly during my DSA Course.) Going briefly through some online brief explanations I saw the overall logic.&lt;/p&gt;
+
+&lt;p&gt;Let us say we have a set like this: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{1,2,3,4,5,6,7}&lt;/code&gt;
+The sum of the elements is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;28&lt;/code&gt; so we need to make two sets summing up to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;14&lt;/code&gt; each.&lt;/p&gt;
+
+&lt;h1 id=&quot;todo&quot;&gt;todo!()&lt;/h1&gt;
+
+&lt;h1 id=&quot;9-bit-strings&quot;&gt;9. Bit Strings&lt;/h1&gt;
+
+&lt;p&gt;This is a very simple problem. We just need to find 2^input. This can be done directly using a bitwise operation&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+int main(void){
+    const long MOD = 1000000007; // 10^9 + 7
+    long input;
+    std::cin&amp;gt;&amp;gt;input;
+    long result = 1 &amp;lt;&amp;lt; input;
+    std::cout&amp;lt;&amp;lt;result%MOD;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-8&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;FAILED on some test cases.&lt;/p&gt;
+
+&lt;p&gt;Observing a failed test case &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input=447&lt;/code&gt; we are getting negative values for both &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2^result&lt;/code&gt; and the final answer. We need to find a better way to do the power and % operations.&lt;/p&gt;
+
+&lt;p&gt;Luckily on googling I found this: https://www.geeksforgeeks.org/exponential-squaring-fast-modulo-multiplication/&lt;/p&gt;
+
+&lt;p&gt;Now let us use this method in our code. Basically we find &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2^input % MOD&lt;/code&gt; in a series of steps i=1 to i=n each time multiplying our input by 2 and taking the MOD.&lt;/p&gt;
+
+&lt;p&gt;The property used is: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a*a % mod = (a%mod) * (a%mod)&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+int main(void){
+    const long long MOD = 1000000007; // 10^9 + 7
+    long long input;
+    std::cin&amp;gt;&amp;gt;input;
+    long long res = 1;
+    for(long long i=0;i&amp;lt;input;i++){
+        res = (res*2);
+        res = res%MOD;
+    }
+    std::cout&amp;lt;&amp;lt;res;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-9&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!
+Cool let’s move on to the next one!&lt;/p&gt;
+
+&lt;h1 id=&quot;10-trailing-zeros&quot;&gt;10. Trailing Zeros&lt;/h1&gt;
+
+&lt;p&gt;Luckily this is a JEE Problem. We need to find the no of multiples of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; in all the numbers upto the input number as that will give us the no of zeros.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; can come as either &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; or any of it’s powers. No of occurences of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5^k&lt;/code&gt; in the numbers upto &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input&lt;/code&gt; is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;box[input/5^k]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Quick Soln using this:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+int main(void){
+    long long n;
+    std::cin&amp;gt;&amp;gt;n;
+    long long zeros = 0;
+    for(long long i=5;i&amp;lt;=n;i*=5){
+        zeros += n/i;
+        if(zeros==0) {
+            break;
+        }
+    }
+    std::cout&amp;lt;&amp;lt;zeros;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-10&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;11-coin-piles&quot;&gt;11. Coin Piles&lt;/h1&gt;
+
+&lt;p&gt;So some maths now:
+Let &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = coins in left pile&lt;/code&gt;
+Let &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = coins in right pile&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We have two options for each of our operations:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Remove 2 coins from a and 1 coin from b&lt;/li&gt;
+  &lt;li&gt;Remove 1 coin from a and 2 coins from b&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x = no of times 1 was performed&lt;/code&gt;.
+Let &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y = no of times 2 was performed&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;total no of moves = x+y&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If at the end of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x+y&lt;/code&gt; operations, the two piles became empty, we have two conditions:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = x*2 + y&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = x + 2*y&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Adding:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a + b = 3*(x + y)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So, we have 1 condition: That the sum of the two piles must be a multiple of 3!&lt;/p&gt;
+
+&lt;p&gt;But, this condition is not sufficient. We have one more also!&lt;/p&gt;
+
+&lt;p&gt;Let one pile be incredibly large and the other be incredibly small (less than twice the size of the other)! We keep on removing 2 elements from the bigger and one from the smaller but the smaller pile becomes empty first!!&lt;/p&gt;
+
+&lt;p&gt;So, we need to ensure that the bigger pile is no bigger than twice the smaller!&lt;/p&gt;
+
+&lt;p&gt;Quick Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+
+int main(void){
+    long long t;
+    std::cin &amp;gt;&amp;gt; t;
+    for (long long i = 0; i&amp;lt;t; i++){
+        long long a, b;
+        std::cin &amp;gt;&amp;gt; a &amp;gt;&amp;gt; b;
+        if ((a+b)%3 == 0 &amp;amp;&amp;amp; 2*a &amp;gt;= b &amp;amp;&amp;amp; 2*b &amp;gt;= a)
+            std::cout &amp;lt;&amp;lt; &quot;YES&quot; &amp;lt;&amp;lt; std::endl;
+        else
+            std::cout &amp;lt;&amp;lt; &quot;NO&quot; &amp;lt;&amp;lt; std::endl;
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;result-11&quot;&gt;RESULT:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;12-palindrome-string&quot;&gt;12. Palindrome String&lt;/h1&gt;
+
+&lt;p&gt;First, we make a frequency array for the string. We see that if the total number of characters having odd frequency is odd, no such palindrome is possible.&lt;/p&gt;
+
+&lt;p&gt;Let’s say we have the frequency array and making a palindrome is possible. How to make it?&lt;/p&gt;
+
+&lt;p&gt;Let us make 2 strings for the left and right halves of the palindrome. Now let’s go through our freq array from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;26&lt;/code&gt;. If a character has even frequency, we can keep half of the count in the starting of palindrome and half at the end. If it has odd frequency just keep all of them in the middle!&lt;/p&gt;
+
+&lt;p&gt;Not so quick implementation xD&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+int main(void){
+    std::string input;
+    std::cin&amp;gt;&amp;gt;input;
+    int freq[26] = {0};
+    for(int i=0; i&amp;lt;input.length(); i++){
+        freq[input[i]-&apos;A&apos;]++;
+    }
+    bool isOdd = input.length()%2 == 1;
+    int noOfOdd = 0;
+    for(int i=0; i&amp;lt;26; i++){
+        if(freq[i]%2 == 1){
+            noOfOdd++;
+        }
+    }
+    if (noOfOdd &amp;gt; 1){
+        std::cout&amp;lt;&amp;lt;&quot;NO SOLUTION&quot;;
+    } else {
+        std::string outputleft = &quot;&quot;;
+        std::string outputright = &quot;&quot;;
+        // Fill all the even freq characters first
+        for(int i=0; i&amp;lt;26; i++){
+            if(freq[i]%2 == 0){
+                int num = freq[i]/2;
+                while(num--){
+                    outputleft += (char)(&apos;A&apos;+i);
+                    outputright += (char)(&apos;A&apos;+i);
+                }
+            }
+        }
+        // Print the outputleft + odd freq character + outputright
+        for(int i=0;i&amp;lt;outputleft.length();i++) std::cout&amp;lt;&amp;lt;outputleft[i];
+        for(int i=0;i&amp;lt;26;i++){
+            if(freq[i]%2 == 1){
+                int num = freq[i];
+                while(num--) std::cout&amp;lt;&amp;lt;(char)(&apos;A&apos;+i);
+            }
+        }
+        for(int i=outputright.length()-1;i&amp;gt;=0;i--) std::cout&amp;lt;&amp;lt;outputright[i];
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-12&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED on all test cases!&lt;/p&gt;
+
+&lt;h1 id=&quot;13-gray-code&quot;&gt;13. Gray Code&lt;/h1&gt;
+
+&lt;p&gt;This can be solved by recursion. Assume we already have the Gray Code for some &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;. How to get for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n+1&lt;/code&gt; ?&lt;/p&gt;
+
+&lt;p&gt;Let’s consider the case of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n=2&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRAY CODE (n = 2):
+00
+01
+11
+10
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now, for n=3 we observe that if we keep a zero in the starting of these numbers, each still differs by one from the next! Same if we keep a one! Also note that taking both of these together (second one in reverse), we get all the numbers in the gray code for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n=3&lt;/code&gt;!&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GRAY CODE (n = 3):
+000
+001
+011
+010
+110
+111
+101
+100
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;std::vector&amp;lt;std::string&amp;gt; gray_code(long long n){
+    if(n==1){
+        std::vector&amp;lt;std::string&amp;gt; vec;
+        vec.push_back(&quot;0&quot;);
+        vec.push_back(&quot;1&quot;);
+        return vec;
+    } else {
+        std::vector&amp;lt;std::string&amp;gt; vec;
+        std::vector&amp;lt;std::string&amp;gt; vecprev = gray_code(n-1);
+        for(int i=0;i&amp;lt;vecprev.size();i++){
+            vec.push_back(&quot;0&quot;+vecprev[i]);
+        }
+        for(int i=vecprev.size()-1;i&amp;gt;=0;i--){
+            vec.push_back(&quot;1&quot;+vecprev[i]);
+        }
+        return vec;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-13&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED on all test cases!&lt;/p&gt;
+
+&lt;h1 id=&quot;14-tower-of-hanoi&quot;&gt;14. Tower of Hanoi&lt;/h1&gt;
+
+&lt;p&gt;I am really sorry I wrote a really big post for this one but my laptop lost power and everything was gone. Seems the work wasn’t saved (Loving first day of emacs already).&lt;/p&gt;
+
+&lt;p&gt;So, A quick summary will have to suffice (No energy for anything more :”(  ) :&lt;/p&gt;
+
+&lt;p&gt;The soln is simple. To move N Disks from Tower 1 to Tower 3 using Tower 2, We first move the top N-1 Disks to tower 2 and the Nth (Bottom Most) Disk to Tower 3. Then We Move the N-2 Disks on Tower 2 to Tower 3. It is a simple Recursion problem.&lt;/p&gt;
+
+&lt;p&gt;Quick Implementation:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;vector&amp;gt;
+#include&amp;lt;utility&amp;gt;
+
+typedef long long ll;
+typedef std::pair&amp;lt;int, int&amp;gt; Move;
+
+void tower_of_hanoi(ll from_tower, ll using_tower, ll to_tower, ll no_of_disks, std::vector&amp;lt;Move&amp;gt; &amp;amp;moves){
+    if(no_of_disks == 0){
+        // Base Case
+        return;
+    } else {
+        // First move the N-1 disks to the middle tower
+        tower_of_hanoi(from_tower, to_tower, using_tower, no_of_disks-1, moves);
+        // Move one disk from the left tower to the right tower
+        // Add the move to the moves vector
+        moves.push_back(std::make_pair(from_tower, to_tower));
+        // Move N-1 disks from the middle tower to the right tower
+        tower_of_hanoi(using_tower, from_tower, to_tower, no_of_disks-1, moves);
+    }
+}
+
+
+int main(void){
+    ll n;
+    std::cin&amp;gt;&amp;gt;n;
+    std::vector&amp;lt;Move&amp;gt; moves;
+    tower_of_hanoi(1, 2, 3, n, moves);
+    std::cout&amp;lt;&amp;lt;moves.size()&amp;lt;&amp;lt;&quot;\n&quot;;
+    for(const auto &amp;amp;move: moves) {
+        std::cout&amp;lt;&amp;lt;move.first&amp;lt;&amp;lt;&quot; &quot;&amp;lt;&amp;lt;move.second&amp;lt;&amp;lt;&quot;\n&quot;;
+    }
+    return 0;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-14&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED! (on all test cases)&lt;/p&gt;
+
+&lt;h1 id=&quot;15-creating-strings&quot;&gt;15. Creating Strings&lt;/h1&gt;
+
+&lt;p&gt;We have to take a string, find all the permutations of it and return the output in alphabetical order.&lt;/p&gt;
+
+&lt;p&gt;The method for generating permutations is pretty standard. If we store them in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::set&lt;/code&gt;, that will take care of the lexicographic ordering automatically for us.&lt;/p&gt;
+
+&lt;p&gt;Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void permute(std::string str, int left, int right, std::set&amp;lt;std::string&amp;gt; &amp;amp;outputs){
+  if(left == right) {
+    std::cout&amp;lt;&amp;lt;str&amp;lt;&amp;lt;std::endl;
+    outputs.insert(str);
+  } else {
+    for(int i=left;i&amp;lt;=right;i++){
+      std::swap(str[left], str[i]);
+      permute(str, left+1, right, outputs);
+      std::swap(str[left], str[i]);
+    }
+  }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-15&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED!&lt;/p&gt;
+
+&lt;h1 id=&quot;16-apple-division&quot;&gt;16. Apple Division&lt;/h1&gt;
+
+&lt;p&gt;We have a set of some numbers. We have to divide it into two sets such that the difference in the sum of the two sets is the least and we have to find that sum.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Ex Input:
+5
+3 2 7 4 1
+Two Sets:
+{2,3,4}, {7,1}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;First let us sort the input:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;7,4,3,2,1&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then let us take a number from the left and insert into set 1 and take the next numbers till the sum exceeds the first number and insert into set two. If it exceeds, we repeat the process. In this way we can solve the problem!&lt;/p&gt;
+
+&lt;p&gt;Eg Soln:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{7} {4,3,2}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{7,1} {4,3,2}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Implementation:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;vector&amp;gt;
+#include&amp;lt;set&amp;gt;
+#include&amp;lt;algorithm&amp;gt;
+#define ll long long
+#define fio std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
+
+ll abs(ll a){
+  if(a&amp;gt;0){
+    return a;
+  } else {
+    return -1*a;
+  }
+}
+
+ll partition(std::vector&amp;lt;ll&amp;gt; &amp;amp;inputs, std::vector&amp;lt;ll&amp;gt; &amp;amp;grp1, std::vector&amp;lt;ll&amp;gt; &amp;amp;grp2, ll n){
+  std::sort(inputs.begin(), inputs.end(), std::greater&amp;lt;ll&amp;gt;());
+  bool insert_in_grp1 = true;
+  ll sum1 = 0, sum2 = 0;
+  for(auto x: inputs){
+    if(sum1&amp;gt;=sum2 &amp;amp;&amp;amp; sum1+sum2 != 0){
+      insert_in_grp1 = false;
+    } else {
+      insert_in_grp1 = true;
+    };
+    if(insert_in_grp1){
+      grp1.push_back(x);
+      sum1 += x;
+    } else {
+      grp2.push_back(x);
+      sum2 += x;
+    }
+  }
+  return abs(sum1-sum2);
+}
+
+int main(void){
+  fio;
+  ll n;
+  ll diff = 0;
+  std::cin&amp;gt;&amp;gt;n;
+  std::vector&amp;lt;ll&amp;gt; inputs(n);
+  std::vector&amp;lt;ll&amp;gt; grp1, grp2;
+  for(ll i = 0; i &amp;lt; n; i ++){
+    std::cin&amp;gt;&amp;gt;inputs[i];
+  }
+  diff = partition(inputs, grp1, grp2, n);
+  std::cout&amp;lt;&amp;lt;diff;
+  return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-16&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;FAILED! (On many test cases!)&lt;/p&gt;
+
+&lt;p&gt;Maybe we are better off finding all the different possible splits and choosing the minimum difference instead….&lt;/p&gt;
+
+&lt;p&gt;Also the constraint is: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 &amp;lt;= n &amp;lt;= 20&lt;/code&gt; which seems very favourible for a slow algorithm.&lt;/p&gt;
+
+&lt;p&gt;There is a very simple way to get all divisions of a set into two subsets. We go through all the numbers from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2^n -1&lt;/code&gt; and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1/0&lt;/code&gt; in the binary representation of each of indicate whether the element at that particular index is present in grp1 or grp2. Let us try to generate all the divisions using this and then go through them and choose the one where the sum is the least!&lt;/p&gt;
+
+&lt;p&gt;(Not so quick) implementations!&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;cmath&amp;gt;
+#include &amp;lt;limits&amp;gt;
+
+#define ll long long
+#define fio std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
+
+ll partition(const std::vector&amp;lt;ll&amp;gt;&amp;amp; input, std::vector&amp;lt;ll&amp;gt;&amp;amp; grp1, std::vector&amp;lt;ll&amp;gt;&amp;amp; grp2, ll n) {
+    std::vector&amp;lt;ll&amp;gt; tmp_grp1, tmp_grp2;
+    ll diff = std::numeric_limits&amp;lt;ll&amp;gt;::max();
+    for (ll i = 0; i &amp;lt; (1 &amp;lt;&amp;lt; n) - 1; i++) {
+        ll sum1 = 0, sum2 = 0;
+        tmp_grp1.clear();
+        tmp_grp2.clear();
+        for (ll index = 0; index &amp;lt; input.size(); index++) {
+            if ((i &amp;amp; (1 &amp;lt;&amp;lt; index)) == 0) {
+                tmp_grp1.push_back(input[index]);
+                sum1 += input[index];
+            } else {
+                tmp_grp2.push_back(input[index]);
+                sum2 += input[index];
+            }
+        }
+        if (std::abs(sum1 - sum2) &amp;lt; diff) {
+            diff = std::abs(sum1 - sum2);
+            grp1 = tmp_grp1;
+            grp2 = tmp_grp2;
+        }
+    }
+    return diff;
+}
+
+int main() {
+    fio;
+    ll n;
+    std::cin&amp;gt;&amp;gt;n;
+    std::vector&amp;lt;ll&amp;gt; input(n);
+    for(ll i = 0; i &amp;lt; n; ++i){
+      std::cin&amp;gt;&amp;gt;input[i];
+    }
+    std::vector&amp;lt;ll&amp;gt; grp1, grp2;
+    ll diff = partition(input, grp1, grp2, n);
+    std::cout &amp;lt;&amp;lt; diff &amp;lt;&amp;lt; std::endl;
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;result-17&quot;&gt;Result:&lt;/h3&gt;
+&lt;p&gt;ACCEPTED! (On all test cases!)&lt;/p&gt;
+
+&lt;h1 id=&quot;17-chessboard-and-queens&quot;&gt;17. Chessboard and Queens&lt;/h1&gt;
+
+&lt;p&gt;From now onwards I will not add any explanations as I don’t have much time.&lt;/p&gt;
+
+&lt;p&gt;Maybe later I will add the explanations….&lt;/p&gt;
+
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+#define fio std::ios_base::sync_with_stdio(false); std::cin.tie(NULL); std::cout.tie(NULL)
+
+int count = 0;
+char board[8][8];
+// Availibility of a particular left/right diagonal and row
+bool left_diag[15] = {false}, right_diag[15] = {false}, rows[7] = {false};
+
+
+void calculate_possibilities(int col){
+  if(col == 8){
+    count++;
+    return;
+  } else {
+    for(int row = 0; row &amp;lt; 8; ++row){
+      if(board[row][col] == &apos;.&apos; &amp;amp;&amp;amp;
+         left_diag[row-col+7] == false &amp;amp;&amp;amp;
+         right_diag[row+col] == false &amp;amp;&amp;amp;
+         rows[row] == false) {
+
+        left_diag[row-col+7] = true;
+        right_diag[row+col] = true;
+        rows[row] = true;
+
+        calculate_possibilities(col+1);
+
+        left_diag[row-col+7] = false;
+        right_diag[row+col] = false;
+        rows[row] = false;
+      }
+    }
+  }
+}
+
+int main(void){
+  fio;
+  for(int i = 0; i &amp;lt; 8; i++){
+    for(int j = 0; j &amp;lt; 8; j++){
+      std::cin&amp;gt;&amp;gt;board[i][j];
+    }
+  }
+  calculate_possibilities(0);
+  std::cout&amp;lt;&amp;lt;count;
+  return 0;
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Malladi Pradyumna</name></author><category term="welcome" /><category term="miscellaneous" /><summary type="html">1. Weird Algorithm</summary></entry><entry><title type="html">Welcome Post</title><link href="http://localhost:4000/welcome-post" rel="alternate" type="text/html" title="Welcome Post" /><published>2023-06-11T00:00:00+05:30</published><updated>2023-06-11T00:00:00+05:30</updated><id>http://localhost:4000/welcome-post</id><content type="html" xml:base="http://localhost:4000/welcome-post">&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
+
+&lt;p&gt;This is my personal website which I will try to maintain regularly. I will be posting some blog articles over the next few months here and share some parts of my work and life.&lt;/p&gt;
+
+&lt;p&gt;As for &lt;strong&gt;why&lt;/strong&gt; have a personal website, I have thought about it and :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is good for your mental health to write frequently and you get to organize your thoughts more often.&lt;/li&gt;
+  &lt;li&gt;It gives me an excuse to actually stop wasting time on mindless internet scrolling and actually do something productive instead.&lt;/li&gt;
+  &lt;li&gt;It is too easy (and free!) to make and host one nowadays that there is no excuse to not have one.
+&lt;em&gt;Edit: I’m sorry it is not that easy to make and host one. React is spawn of Satan. Leaving this here for posterity.&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Even if it amounts to nothing at least I have gained some technical knowledge making the blog.
+&lt;em&gt;Edit: Since I ended up using a jekyll template even this point is moot now I guess haha&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As for the kind of content I would like to post here:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Maintain a list of projects that I am doing/have done/currently am doing.&lt;/li&gt;
+  &lt;li&gt;Some blog posts with my thoughts on various things.&lt;/li&gt;
+  &lt;li&gt;Some technical posts on machine learning (Summarizing as I learn for better retention)&lt;/li&gt;
+  &lt;li&gt;Anything else I feel like posting.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Malladi Pradyumna</name></author><category term="welcome" /><category term="miscellaneous" /><summary type="html">Welcome!</summary></entry></feed>
