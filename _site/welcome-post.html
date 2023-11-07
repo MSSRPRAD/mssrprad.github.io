@@ -17,23 +17,23 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Welcome!" />
 <meta property="og:description" content="Welcome!" />
-<link rel="canonical" href="https://mssrprad.github.io/welcome-post" />
-<meta property="og:url" content="https://mssrprad.github.io/welcome-post" />
+<link rel="canonical" href="http://localhost:4000/welcome-post" />
+<meta property="og:url" content="http://localhost:4000/welcome-post" />
 <meta property="og:site_name" content="Pradyumna Malladi" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=https://mssrprad.github.io/welcome-post" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/welcome-post" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2023-06-11T00:00:00+05:30" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="og:image" content="https://soopr.xyz/images/card?url=https://mssrprad.github.io/welcome-post" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/welcome-post" />
 <meta property="twitter:title" content="Welcome Post" />
 <meta name="twitter:site" content="@na" />
 <meta name="twitter:creator" content="@Malladi Pradyumna" />
 <script type="application/ld+json">
-{"description":"Welcome!","headline":"Welcome Post","dateModified":"2023-06-11T00:00:00+05:30","datePublished":"2023-06-11T00:00:00+05:30","url":"https://mssrprad.github.io/welcome-post","author":{"@type":"Person","name":"Malladi Pradyumna"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mssrprad.github.io/welcome-post"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"Welcome!","headline":"Welcome Post","dateModified":"2023-06-11T00:00:00+05:30","datePublished":"2023-06-11T00:00:00+05:30","url":"http://localhost:4000/welcome-post","author":{"@type":"Person","name":"Malladi Pradyumna"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/welcome-post"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <script async defer data-soopr-token="" src="https://sdk.soopr.co/soopr.js"  ></script>
 <!-- End Jekyll SEO tag -->
 
-  <link type="application/atom+xml" rel="alternate" href="https://mssrprad.github.io/feed.xml" title="Pradyumna Malladi" />
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Pradyumna Malladi" />
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
@@ -79,9 +79,94 @@
     }
   }
 </script>
+  
 
 
-  </head>
+<script type="module" src="./assets/sanscript.js"></script>
+<script type="module" src="./assets/transliterate.js"></script>
+
+<div class="headerDiv">
+    <div class="transliterationDropdownDiv">
+        <select id="transliterationDropdown" class="transliterationDropdown">
+            <option class="transliterateOption" value="devanagari">Devanagari</option>
+            <option class="transliterateOption" value="telugu">Telugu</option>
+            <option class="transliterateOption" value="hk">Harvard-Kyoto</option>
+            <option class="transliterateOption" value="bengali">Bengali</option>
+            <option class="transliterateOption" value="gujarati">Gujarati</option>
+            <option class="transliterateOption" value="gurmukhi">Gurmukhi</option>
+            <option class="transliterateOption" value="kannada">Kannada</option>
+            <option class="transliterateOption" value="malayalam">Malayalam</option>
+            <option class="transliterateOption" value="oriya">Oriya</option>
+            <option class="transliterateOption" value="tamil">Tamil</option>
+            <option class="transliterateOption" value="iast">International Alphabet of Sanskrit Transliteration</option>
+            <option class="transliterateOption" value="itrans">ITRANS</option>
+            <option class="transliterateOption" value="itrans_dravidian">ITRANS with support for Dravidian short "e"
+                and"o"</option>
+            <option class="transliterateOption" value="kolkata">National Library at Kolkata</option>
+            <option class="transliterateOption" value="slp1">Sanskrit Library Phonetic Basic</option>
+            <option class="transliterateOption" value="velthuis">Velthuis</option>
+            <option class="transliterateOption" value="wx">WX</option>
+        </select>
+    </div>
+</div>
+
+<style>
+    /* Light Mode */
+
+    .transliterated_text {
+        margin: auto;
+        height: max-content;
+        width: max-content;
+    }
+
+    .headerDiv {
+        margin: auto;
+        position: fixed;
+        background-color: transparent;
+        color: #000000;
+        width: fit-content;
+    }
+
+    .transliterationDropdownDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #transliterationDropdown {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        padding-left: 0.5rem;
+        text-align: center;
+        border-radius: 0.5rem;
+        border-width: 1px;
+        border-color: rgb(209, 213, 219);
+        background-color: rgb(249, 250, 251);
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: rgba(17, 24, 39, 1);
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+        .headerDiv {
+            background-color: transparent;
+            color: #ffffff;
+        }
+
+        #transliterationDropdown {
+            border-color: rgb(60, 63, 68);
+            background-color: rgb(40, 42, 47);
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+</style></head>
 <body>
     <main class="page-content" aria-label="Content">
       <div class="w">

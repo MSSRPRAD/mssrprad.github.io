@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://mssrprad.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mssrprad.github.io/" rel="alternate" type="text/html" /><updated>2023-11-07T19:27:10+05:30</updated><id>https://mssrprad.github.io/feed.xml</id><title type="html">Pradyumna Malladi</title><subtitle>This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
-</subtitle><author><name>Pradyumna Malladi</name></author><entry><title type="html">Static Site Generator For Github Pages</title><link href="https://mssrprad.github.io/static-site-generator-for-github-pages" rel="alternate" type="text/html" title="Static Site Generator For Github Pages" /><published>2023-11-07T00:00:00+05:30</published><updated>2023-11-07T00:00:00+05:30</updated><id>https://mssrprad.github.io/Static-Site-Generator-for-Github-Pages</id><content type="html" xml:base="https://mssrprad.github.io/static-site-generator-for-github-pages">&lt;h2 id=&quot;github-pages&quot;&gt;Github Pages&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-11-07T21:21:34+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pradyumna Malladi</title><subtitle>This is the personal website of Pradyumna Malladi. You can browse ./blog to read some of my posts and ./about to know more about me!
+</subtitle><author><name>Pradyumna Malladi</name></author><entry><title type="html">Static Site Generator For Github Pages</title><link href="http://localhost:4000/static-site-generator-for-github-pages" rel="alternate" type="text/html" title="Static Site Generator For Github Pages" /><published>2023-11-07T00:00:00+05:30</published><updated>2023-11-07T00:00:00+05:30</updated><id>http://localhost:4000/Static-Site-Generator-for-Github-Pages</id><content type="html" xml:base="http://localhost:4000/static-site-generator-for-github-pages">&lt;h2 id=&quot;github-pages&quot;&gt;Github Pages&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Warning in Advance&lt;/code&gt;: This post is going to be very code heavy&lt;/p&gt;
 
@@ -299,7 +299,43 @@ logger.debug(&quot;static files copied to docs&quot;)
 
 &lt;p&gt;Maybe because frontend optimization is not so important (or rather so costly)…&lt;/p&gt;
 
-&lt;h2 id=&quot;hope-you-enjoyed-the-post&quot;&gt;Hope you enjoyed the post!&lt;/h2&gt;</content><author><name>Malladi Pradyumna</name></author><category term="webdev" /><category term="python" /><category term="html" /><category term="css" /><category term="js" /><category term="github" /><category term="programming" /><summary type="html">Github Pages</summary></entry><entry><title type="html">October Updates</title><link href="https://mssrprad.github.io/october-updates" rel="alternate" type="text/html" title="October Updates" /><published>2023-10-22T00:00:00+05:30</published><updated>2023-10-22T00:00:00+05:30</updated><id>https://mssrprad.github.io/October-Updates</id><content type="html" xml:base="https://mssrprad.github.io/october-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+&lt;h2 id=&quot;hope-you-enjoyed-the-post&quot;&gt;Hope you enjoyed the post!&lt;/h2&gt;</content><author><name>Malladi Pradyumna</name></author><category term="webdev" /><category term="python" /><category term="html" /><category term="css" /><category term="js" /><category term="github" /><category term="programming" /><summary type="html">Github Pages</summary></entry><entry><title type="html">Website Updates</title><link href="http://localhost:4000/website-updates" rel="alternate" type="text/html" title="Website Updates" /><published>2023-11-07T00:00:00+05:30</published><updated>2023-11-07T00:00:00+05:30</updated><id>http://localhost:4000/Website-Updates</id><content type="html" xml:base="http://localhost:4000/website-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+
+&lt;p&gt;Some quick updates regarding the website (Totally not doing this just to fill up the blog 😉):&lt;/p&gt;
+
+&lt;h2 id=&quot;previously&quot;&gt;Previously&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Github Pages always had the issue of sometimes not re-deploying after making a push. Had to redeploy/unpublish and deploy many times.&lt;/li&gt;
+  &lt;li&gt;The workflows were irritating. They never worked and instead sometimes messed up the commit history. Plus they were very distracting!&lt;/li&gt;
+  &lt;li&gt;Pages have to be entirely static. (No API Requests allowed afaik)&lt;/li&gt;
+  &lt;li&gt;No good analytics unless I add the Google Spyware for traffic analysis.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;now&quot;&gt;Now&lt;/h2&gt;
+
+&lt;p&gt;As a result, this website is now hosted on Cloudflare Pages!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I haven’t observed any speedups yet but still very excited!&lt;/li&gt;
+  &lt;li&gt;I can make API calls!!&lt;/li&gt;
+  &lt;li&gt;There are a ton of apps I can install now on top of the website! (Though they are causing significant slowdown so nvm)&lt;/li&gt;
+  &lt;li&gt;I have free analytics 🔥🔥&lt;/li&gt;
+  &lt;li&gt;I am also using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sanscript&lt;/code&gt; package to provide transliterations now.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;also-transliterable-text-&quot;&gt;Also, Transliterable Text 🔥🔥&lt;/h2&gt;
+
+&lt;div class=&quot;sanscript&quot; style=&quot;display: none&quot;&gt;
+asty uttarasyAM dizi devatAtmA himAlayo nAma nagAdhirAjaH .&lt;br /&gt;
+pUrvAparau toyanidhI vigAhya sthitaH pRthivyA iva mAnadaNDaH ..
+&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div class=&quot;sanscript&quot; style=&quot;display: none&quot;&amp;gt;
+asty uttarasyAM dizi devatAtmA himAlayo nAma nagAdhirAjaH .&amp;lt;br/&amp;gt;
+pUrvAparau toyanidhI vigAhya sthitaH pRthivyA iva mAnadaNDaH ..
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">October Updates</title><link href="http://localhost:4000/october-updates" rel="alternate" type="text/html" title="October Updates" /><published>2023-10-22T00:00:00+05:30</published><updated>2023-10-22T00:00:00+05:30</updated><id>http://localhost:4000/October-Updates</id><content type="html" xml:base="http://localhost:4000/october-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
 
 &lt;p&gt;Have been thinking about buying a domain name for myself and linking it to pages. Would cost around 800rs per year but maybe it’s worth it. Also this site is static but the Oracle Cloud Free Tier would allow me to have a dynamic site though I’m unsure as to whether it’s worth it…..&lt;/p&gt;
 
@@ -340,11 +376,11 @@ logger.debug(&quot;static files copied to docs&quot;)
   &lt;li&gt;
     &lt;p&gt;Finish Ramayana this month&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Broke Deploy</title><link href="https://mssrprad.github.io/broke-deploy" rel="alternate" type="text/html" title="Broke Deploy" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>https://mssrprad.github.io/Broke-Deploy</id><content type="html" xml:base="https://mssrprad.github.io/broke-deploy">&lt;h1 id=&quot;it-happened&quot;&gt;It happened.&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Broke Deploy</title><link href="http://localhost:4000/broke-deploy" rel="alternate" type="text/html" title="Broke Deploy" /><published>2023-10-21T00:00:00+05:30</published><updated>2023-10-21T00:00:00+05:30</updated><id>http://localhost:4000/Broke-Deploy</id><content type="html" xml:base="http://localhost:4000/broke-deploy">&lt;h1 id=&quot;it-happened&quot;&gt;It happened.&lt;/h1&gt;
 
 &lt;p&gt;Broke my website deploy. I knew I shouldn’t have copied the workflow without understanding. The updates I made locally would show in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; but it wouldn’t when built and deployed to pages using the workflow.&lt;/p&gt;
 
-&lt;p&gt;Fortunately there is a very simple temporary solution for this. I changed the deploy mechanism to deploy from a branch and am moving the static files to /docs before pushing updates. Now I have to add learning workflows to my long list of things I am never gonna get done.&lt;/p&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">It happened.</summary></entry><entry><title type="html">August Updates</title><link href="https://mssrprad.github.io/august-updates" rel="alternate" type="text/html" title="August Updates" /><published>2023-08-03T00:00:00+05:30</published><updated>2023-08-03T00:00:00+05:30</updated><id>https://mssrprad.github.io/August-Updates</id><content type="html" xml:base="https://mssrprad.github.io/august-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
+&lt;p&gt;Fortunately there is a very simple temporary solution for this. I changed the deploy mechanism to deploy from a branch and am moving the static files to /docs before pushing updates. Now I have to add learning workflows to my long list of things I am never gonna get done.&lt;/p&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">It happened.</summary></entry><entry><title type="html">August Updates</title><link href="http://localhost:4000/august-updates" rel="alternate" type="text/html" title="August Updates" /><published>2023-08-03T00:00:00+05:30</published><updated>2023-08-03T00:00:00+05:30</updated><id>http://localhost:4000/August-Updates</id><content type="html" xml:base="http://localhost:4000/august-updates">&lt;h1 id=&quot;hello-there&quot;&gt;Hello There!&lt;/h1&gt;
 
 &lt;p&gt;I wish I could have said I got a lot of work done over the last two months or that I learnt a lot of new skills. Sadly that was not the case (surprise surprise).&lt;/p&gt;
 
@@ -363,7 +399,7 @@ logger.debug(&quot;static files copied to docs&quot;)
   &lt;li&gt;Finish my Crossword program.&lt;/li&gt;
   &lt;li&gt;Going through https://rentry.org/llm-training  and learning how LLM’s work.&lt;/li&gt;
   &lt;li&gt;Get CUDA setup on my PC by some chad when I return to the Campus.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Cses Introductory Problems</title><link href="https://mssrprad.github.io/cses-introductory-problems" rel="alternate" type="text/html" title="Cses Introductory Problems" /><published>2023-06-13T00:00:00+05:30</published><updated>2023-06-13T00:00:00+05:30</updated><id>https://mssrprad.github.io/CSES-Introductory-Problems</id><content type="html" xml:base="https://mssrprad.github.io/cses-introductory-problems">&lt;h1 id=&quot;1-weird-algorithm&quot;&gt;1. Weird Algorithm&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Malladi Pradyumna</name></author><category term="update" /><category term="miscellaneous" /><summary type="html">Hello There!</summary></entry><entry><title type="html">Cses Introductory Problems</title><link href="http://localhost:4000/cses-introductory-problems" rel="alternate" type="text/html" title="Cses Introductory Problems" /><published>2023-06-13T00:00:00+05:30</published><updated>2023-06-13T00:00:00+05:30</updated><id>http://localhost:4000/CSES-Introductory-Problems</id><content type="html" xml:base="http://localhost:4000/cses-introductory-problems">&lt;h1 id=&quot;1-weird-algorithm&quot;&gt;1. Weird Algorithm&lt;/h1&gt;
 
 &lt;p&gt;Let’s try the most obvious solution:&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void steps(int n) {
@@ -1138,7 +1174,7 @@ int main(void){
   return 0;
 }
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Malladi Pradyumna</name></author><category term="welcome" /><category term="miscellaneous" /><summary type="html">1. Weird Algorithm</summary></entry><entry><title type="html">Welcome Post</title><link href="https://mssrprad.github.io/welcome-post" rel="alternate" type="text/html" title="Welcome Post" /><published>2023-06-11T00:00:00+05:30</published><updated>2023-06-11T00:00:00+05:30</updated><id>https://mssrprad.github.io/welcome-post</id><content type="html" xml:base="https://mssrprad.github.io/welcome-post">&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Malladi Pradyumna</name></author><category term="welcome" /><category term="miscellaneous" /><summary type="html">1. Weird Algorithm</summary></entry><entry><title type="html">Welcome Post</title><link href="http://localhost:4000/welcome-post" rel="alternate" type="text/html" title="Welcome Post" /><published>2023-06-11T00:00:00+05:30</published><updated>2023-06-11T00:00:00+05:30</updated><id>http://localhost:4000/welcome-post</id><content type="html" xml:base="http://localhost:4000/welcome-post">&lt;h1 id=&quot;welcome&quot;&gt;Welcome!&lt;/h1&gt;
 
 &lt;p&gt;This is my personal website which I will try to maintain regularly. I will be posting some blog articles over the next few months here and share some parts of my work and life.&lt;/p&gt;
 
