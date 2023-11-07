@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="html" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    
+      Static Site Generator For Github Pages
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.7.3 -->
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Static Site Generator For Github Pages" />
+<meta name="author" content="Malladi Pradyumna" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Github Pages" />
+<meta property="og:description" content="Github Pages" />
+<link rel="canonical" href="http://localhost:4000/static-site-generator-for-github-pages" />
+<meta property="og:url" content="http://localhost:4000/static-site-generator-for-github-pages" />
+<meta property="og:site_name" content="Pradyumna Malladi" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/static-site-generator-for-github-pages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-07T00:00:00+05:30" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://soopr.xyz/images/card?url=http://localhost:4000/static-site-generator-for-github-pages" />
+<meta property="twitter:title" content="Static Site Generator For Github Pages" />
+<meta name="twitter:site" content="@na" />
+<meta name="twitter:creator" content="@Malladi Pradyumna" />
+<script type="application/ld+json">
+{"description":"Github Pages","headline":"Static Site Generator For Github Pages","dateModified":"2023-11-07T00:00:00+05:30","datePublished":"2023-11-07T00:00:00+05:30","url":"http://localhost:4000/static-site-generator-for-github-pages","author":{"@type":"Person","name":"Malladi Pradyumna"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/static-site-generator-for-github-pages"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<script async defer data-soopr-token="" src="https://sdk.soopr.co/soopr.js"  ></script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Pradyumna Malladi" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Favicon -->
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+    <script type="text/javascript">
+  window.addEventListener('load', themeChange);
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme)
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+  function themeChange() {
+    let button = document.querySelector('.theme-toggle');
+
+    button.addEventListener('click', function (e) {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    let transition = () => {
+      document.documentElement.classList.add('transition');
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+      }, 1000);
+    }
+  }
+</script>
+
+
+  
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K6YQF2GG7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K6YQF2GG7C');
+</script></head>
+<body>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">/home</a>
+<h1 class="post-title">Static Site Generator For Github Pages</h1>
+<p class="post-date text-bold">
+  
+    <span class="text-upcase">Malladi Pradyumna</span> / 
+  
+  
+    <span class="text-upcase">November 2023</span>
+  
+
+
+  
+  
+  (1515 Words, 
+  9 Minutes)
+  
+
+</p>
+
+<div class="soopr-btn"
+   data-twitter="SooprCo"
+>
+</div>
+
+
+  <div class="">
+    
+    <span class="tag">webdev</span>
+    
+    <span class="tag">python</span>
+    
+    <span class="tag">html</span>
+    
+    <span class="tag">css</span>
+    
+    <span class="tag">js</span>
+    
+    <span class="tag">github</span>
+    
+    <span class="tag">programming</span>
+    
+  </div>
+
+
+<h2 id="github-pages">Github Pages</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Warning in Advance</code>: This post is going to be very code heavy</p>
+
+<p>If you don’t know what Github Pages is, it is this cool feature offered by Github where they allow you to host static files right from your GitHub repository.</p>
+
+<p>All we have to do is keep our HTML, CSS, and JavaScript files with an <code class="language-plaintext highlighter-rouge">index.html</code> in our repository (either in the <code class="language-plaintext highlighter-rouge">root/</code> folder or the <code class="language-plaintext highlighter-rouge">docs/</code> folder) and choose the Source in <code class="language-plaintext highlighter-rouge">/settings/pages</code> as <code class="language-plaintext highlighter-rouge">Deploy from a branch</code>. Each time we build, our website will be re-deployed (Though I have observed sometimes it doesn’t update and you have to unpublish the site and deploy again to fix it).</p>
+
+<p>Otherwise, if you want to get fancy, you can even run a build process using some workflow wizardry.</p>
+
+<h2 id="but-i-wanna-have-routing">But I wanna have routing!</h2>
+
+<p>I get it.</p>
+
+<p><code class="language-plaintext highlighter-rouge">www.malladipradyumna.com/static-site-generator-for-github-pages.html</code> looks way uglier.</p>
+
+<p>Basically, we don’t want the <code class="language-plaintext highlighter-rouge">.html</code>. We want to navigate to <code class="language-plaintext highlighter-rouge">/blog</code> to see all the posts instead of <code class="language-plaintext highlighter-rouge">/blog.html</code>.</p>
+
+<h2 id="but-how-to-do-routing-in-a-static-site-deployed-to-github-pages">But how to do routing in a static site deployed to github pages?</h2>
+
+<p>There are two ways.</p>
+
+<h3 id="have-a-spa-single-page-application-and-manage-routing-using-javascript-and-the-history-api">Have a SPA (Single Page Application) and manage routing using <code class="language-plaintext highlighter-rouge">Javascript</code> and the <code class="language-plaintext highlighter-rouge">history API</code></h3>
+
+<p>Add this <a href="https://stackoverflow.com/a/67041356"><code class="language-plaintext highlighter-rouge">router.js</code></a> to your <code class="language-plaintext highlighter-rouge">base.html</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">home</span> <span class="o">=</span> <span class="s2">``</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">about</span> <span class="o">=</span> <span class="s2">``</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">blog</span> <span class="o">=</span> <span class="s2">``</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">invalidPage</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">  </span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">routes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">:</span> <span class="nx">home</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">/about</span><span class="dl">"</span><span class="p">:</span> <span class="nx">about</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">/blog</span><span class="dl">"</span><span class="p">:</span> <span class="nx">blog</span><span class="p">,</span>
+    <span class="na">default</span><span class="p">:</span> <span class="nx">invalidPage</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">render</span> <span class="o">=</span> <span class="nx">path</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">path: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">path</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">routes</span><span class="p">[</span><span class="nx">path</span><span class="p">]</span> <span class="o">||</span> <span class="nx">invalidPage</span><span class="p">;</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#root</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">content</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Add a single click event listener for all links that navigate within the site</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">evt</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">A</span><span class="dl">"</span> <span class="o">&amp;&amp;</span> <span class="nx">target</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">).</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">evt</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="kd">const</span> <span class="p">{</span> <span class="na">pathname</span><span class="p">:</span> <span class="nx">path</span> <span class="p">}</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">href</span><span class="p">);</span>
+        <span class="nx">render</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">pushState</span><span class="p">({</span> <span class="nx">path</span> <span class="p">},</span> <span class="nx">path</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">popstate</span><span class="dl">"</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">render</span><span class="p">(</span><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">).</span><span class="nx">pathname</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="the-problems-with-this-approach">The problems with this approach</h3>
+
+<p>This works only if the user clicks a button that redirects to say <code class="language-plaintext highlighter-rouge">/about</code> but doesn’t work if the user opens say <code class="language-plaintext highlighter-rouge">www.malladipradyumna.com/about</code>! It will navigate to <code class="language-plaintext highlighter-rouge">404.html</code> on Gh-Pages!</p>
+
+<p>How to fix this?</p>
+
+<p>One way is to use a script that automatically redirect to <code class="language-plaintext highlighter-rouge">index.html</code> or the route based on the url when the document is loaded. See this <a href="https://stackoverflow.com/questions/36296012/is-there-a-configuration-in-github-pages-that-allows-you-to-redirect-everything">Stackoverflow Question</a> for more about this.</p>
+
+<p>But this method is not perfect!</p>
+
+<p>The browser will often give a very annoying popup before the redirect.</p>
+
+<h2 id="what-to-do-then">What to do then?</h2>
+
+<p>As I was struggling I suddenly realized something!</p>
+
+<p>Wait a minute! Don’t I have two static websites running on Github Pages already! <a href="https://github.com/mssrprad/website">Website</a> that uses SolidJS’s <code class="language-plaintext highlighter-rouge">solid-start</code> router and <a href="https://malladipradyumna.com">Website</a> that uses the Jekyll Static Site Generator!</p>
+
+<p>After some inspection of the build directories, it was obvious that the Github Pages server was automatically rendering <code class="language-plaintext highlighter-rouge">route.html</code> for <code class="language-plaintext highlighter-rouge">/route</code>.</p>
+
+<p>Both the websites were compiling/building a static html file for each route.</p>
+
+<h2 id="static-site-generator">Static Site Generator</h2>
+
+<p>Finally, we come to the Static Site Generator.</p>
+
+<h3 id="directory-structure">Directory Structure</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── build.log
+├── build.py
+├── README.md
+├── requirements.txt
+├── src
+│   ├── about.html
+│   ├── base.html
+│   ├── blog.html
+│   ├── index.html
+│   ├── input.css
+│   ├── post.html
+│   ├── _posts
+│   ├── _site
+│   └── static
+├── tailwind.config.js
+</code></pre></div></div>
+
+<h3 id="basehtml"><code class="language-plaintext highlighter-rouge">base.html</code></h3>
+
+<p>Sorry am not able to render the html inside the code block due to some markdown conversion issues. Attaching a screenshot for now.</p>
+
+<p><img src="../images/base-html.png" alt="base.html" /></p>
+
+<p>Note that we are using <a href="https://jinja.palletsprojects.com/en/3.1.x/templates/"><code class="language-plaintext highlighter-rouge">jinja2</code></a> templating syntax. You must have encountered it if you have ever worked with <code class="language-plaintext highlighter-rouge">flask</code> or <code class="language-plaintext highlighter-rouge">django</code> libraries.</p>
+
+<p>It makes the rendering of various different pages from our markdown/yaml content much easier.</p>
+
+<h3 id="posthtml-and-bloghtml"><code class="language-plaintext highlighter-rouge">post.html</code> and <code class="language-plaintext highlighter-rouge">blog.html</code></h3>
+
+<p><img src="../images/post-html.png" alt="post.html" /></p>
+
+<p><img src="../images/blog-html.png" alt="blog.html" /></p>
+
+<h3 id="rendering-each-individual-page">Rendering each individual page</h3>
+
+<p>We load the content from say <code class="language-plaintext highlighter-rouge">home.md</code> and convert to markdown and render into <code class="language-plaintext highlighter-rouge">home.html</code> inside the <code class="language-plaintext highlighter-rouge">docs/</code> directory.</p>
+
+<p><code class="language-plaintext highlighter-rouge">home.md</code></p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Home</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">Post</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="no">null</span>
+<span class="na">description</span><span class="pi">:</span> <span class="no">null</span>
+<span class="nn">---</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## Navigation:</span>
+
+<span class="pi">-</span> <span class="s">Head over to /about to know more about me</span>
+<span class="pi">-</span> <span class="s">Head over to /blog to read my posts</span>
+
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">build.py</code></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Get Home Page
+</span><span class="n">home</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">home</span> <span class="o">=</span> <span class="n">frontmatter</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">home_path</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"home.md successfully loaded"</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Failed to load home.md: %s"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="c1"># Build index in docs
+</span><span class="n">page_index</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"./src/index.html"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="n">page_index</span> <span class="o">=</span> <span class="nb">file</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">template_index</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">page_index</span><span class="p">)</span>
+<span class="n">rendered_index</span> <span class="o">=</span> <span class="n">template_index</span><span class="p">.</span><span class="n">render</span><span class="p">(</span><span class="n">home</span><span class="o">=</span><span class="n">markdown</span><span class="p">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">home</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"./docs/index.html"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered_index</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"index.html successfully built and saved"</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"./docs/404.html"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="nb">file</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">rendered_index</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"404.html successfully built and saved"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We do this kind of thing for each page.</p>
+
+<h3 id="rendering-each-individual-post-and-bloghtml">Rendering each individual post and blog.html</h3>
+
+<p>Let’s say we have posts like this: <code class="language-plaintext highlighter-rouge">_posts/06-11-2023-Demo.md</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">build.py</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>posts = []
+try:
+    for filename in os.listdir(posts_path):
+        if filename.endswith(".md"):  # Assuming your posts are Markdown files
+            post_path = os.path.join(posts_path, filename)
+            with open(post_path, "r") as post_file:
+                posts.append({post_path: frontmatter.load(post_file)})
+    logger.debug("Posts successfully loaded")
+except Exception as e:
+    logger.error("Failed to load the posts from _posts: %s", str(e))
+
+page_blog = None
+post_keys = []
+
+for i in posts:
+    input_string = [a for a in i.keys()][0]
+    post_keys.append(
+        (
+            input_string.split("/")[-1]
+            .split(".md")[0]
+            .split("-", 3)[-1]
+            .replace("-", " "),
+            "-".join(input_string.split("/")[-1].split(".md")[0].split("-")[:3][::-1]),
+            input_string,
+        )
+    )
+
+logger.debug("Post keys generated")
+
+
+def get_postcontent(path):
+    with open(path, "r") as file:
+        return markdown.markdown(frontmatter.load(file).content)
+
+
+post_data = [
+    {
+        "title": pk[0],
+        "date": pk[1],
+        "slug": pk[0].replace(" ", "-"),
+        "content": get_postcontent(pk[2]),
+    }
+    for pk in post_keys
+]
+
+post_data = sorted(post_data, key=lambda x: x["date"], reverse=True)
+
+
+logger.debug("Post data generated")
+
+with open("./src/blog.html", "r") as file:
+    page_blog = file.read()
+    logger.debug("blog.html content loaded")
+
+template_blog = env.from_string(page_blog)
+rendered_blog = template_blog.render(posts=post_data)
+
+with open("./docs/blog.html", "w") as file:
+    file.write(rendered_blog)
+    logger.debug("blog.html successfully built and saved")
+
+logger.info("No Build Errors!............")
+
+# Build each post
+with open("./src/post.html", "r") as file:
+    page_post = file.read()
+    template_post = env.from_string(page_post)
+
+for post in post_data:
+    rendered_post = template_post.render(post=post)
+    post_slug = post["slug"]
+    with open(f"./docs/{post_slug}.html", "w") as file:
+        file.write(rendered_post)
+        logger.debug(f"{post_slug}.html successfully built and saved")
+
+# Copy static folders/files to docs
+shutil.copytree("./src/static", "./docs/static", dirs_exist_ok=True)
+logger.debug("static files copied to docs")
+</code></pre></div></div>
+
+<h2 id="simulating-the-github-pages-server-using-a-simple-flask-server">Simulating the Github Pages server using a simple flask server</h2>
+
+<p>As I mentioned above, the Github Pages server will automatically render <code class="language-plaintext highlighter-rouge">/route.html</code> for <code class="language-plaintext highlighter-rouge">/route</code>.</p>
+
+<p>But, our simple <code class="language-plaintext highlighter-rouge">python -m http.server 8000</code> will not do that!</p>
+
+<p>A simple workaround is to use a simple Flask Server to simulate this Github Pages environment.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">send_from_directory</span>
+
+<span class="c1"># Initialize Flask app
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">,</span> <span class="n">template_folder</span><span class="o">=</span><span class="s">"."</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s">"./static"</span><span class="p">)</span>
+<span class="n">app</span><span class="p">.</span><span class="n">root_path</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="n">root_path</span> <span class="o">+</span> <span class="s">"/docs"</span>
+
+<span class="c1"># Start the dev server
+</span><span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/&lt;route&gt;"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">serve_html</span><span class="p">(</span><span class="n">route</span><span class="o">=</span><span class="s">"index"</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">f"</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s">.html"</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Development server started"</span><span class="p">)</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="end">End</h2>
+
+<p>As I’ve made the site, I learnt that the biggest difficulty was designing the frontend not all this scripting work. Making a static site generator is not so difficult especially since you have so many examples that you can reverse engineer.s</p>
+
+<p>More than half the effort was spent in making the site look at least ‘not hideous’.</p>
+
+<p>I don’t know why frontend development is said to be ‘easy’. I find it to be the most challenging part of web development.</p>
+
+<p>Maybe because frontend optimization is not so important (or rather so costly)…</p>
+
+<h2 id="hope-you-enjoyed-the-post">Hope you enjoyed the post!</h2>
+
+
+        
+          <button title="Toggle Theme" class="theme-toggle">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentcolor">
+    <circle cx="16" cy="16" r="14" fill="none" stroke="currentcolor" stroke-width="4"></circle>
+    <path d="
+             M 16 0
+             A 16 16 0 0 0 16 32
+             z">
+    </path>
+  </svg>
+</button>
+
+        
+        <div class="credits">&copy;&nbsp;2023&nbsp;Pradyumna Malladi
+          &nbsp;
+          •
+          &nbsp;Powered by <a href="https://www.soopr.co" target="_blank" rel="noreferrer">Soopr</a>
+          &nbsp;
+          •
+          &nbsp;Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
+        </div>
+      </div>
+    </main><script async defer src="https://sdk.soopr.co/soopr.js"></script></body>
+</html>
