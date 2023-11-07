@@ -33,6 +33,10 @@ There are two ways.
 
 Add this [`router.js`](https://stackoverflow.com/a/67041356) to your `base.html`
 
+
+Starting of `router.js` that doesn't render
+![Starting of router.js that doesn't render](../images/router-js.png)
+Rest of the `router.js`
 ```javascript
 let home = `{{ home }}`;
 let about = `{{ about }}`;
