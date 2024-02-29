@@ -22,7 +22,7 @@
 
 ---
 
-1. No [MLP](MLP.md) (Multi Layer Perceptron / Fully Connected Neural Network) Layers
+1. No [MLP](MLP.md) (Multi Layer [Perceptron](Perceptron.md) / Fully Connected Neural Network) Layers
 1. No Biases in Weights (If at all required we can modify weights creating an additional dimension that is always one but it doesn't affect any insights discovered in the paper)
 1. No *Layer Norm*
 

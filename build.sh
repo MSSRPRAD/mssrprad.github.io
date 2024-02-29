@@ -8,6 +8,7 @@ npm i;
 rm -rf content/*;
 obsidian-export ~/Desktop/Obsidian-Vault/Pradu/ ./content --frontmatter=always --no-recursive-embeds;
 npx quartz build
+rm -rf ../website
 mkdir ../website
 mkdir ../website/dist
 mkdir ../website/content
